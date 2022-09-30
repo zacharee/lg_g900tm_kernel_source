@@ -1,0 +1,144 @@
+if LGE_PM
+
+config LGE_PM_BATTERY_CYCLE
+	bool "LG Electronic battery cycle count"
+	default n
+	help
+	  Say Y here to support battery cycle count.
+
+config LGE_PM_BATTERY_AGING_FACTOR
+	bool "LG Electronic battery aging factor"
+	default n
+	depends on LGE_PM_BATTERY_CYCLE
+	help
+	  Say Y here to support battery aging factor.
+
+config LGE_PM_BATTERY_ID
+	bool "LG Electronic Battery ID"
+	default n
+	help
+	  Say Y here to support check battery id.
+
+config LGE_PM_BATTERY_NTC_TUNED
+	bool "LG Electronic Battery NTC Tuning value"
+	default n
+	help
+	  Say Y here to use tuning value of battery NTC.
+
+config LGE_PM_BATTERY_PRESENT
+	bool "LG Electronic Battery present related patch"
+	default n
+	help
+	  Say Y here to apply battery present handling patch.
+
+config LGE_PM_CHARGERLOGO
+	bool "LG Electronic Chargerlogo related patch"
+	default n
+	help
+	  Say Y here to apply patch for running chargerlogo.
+
+config LGE_PM_CHARGER_CONTROLLER
+	bool "LG Electronic Charger Controller"
+	default n
+	help
+	  Say Y here to enable charger-controller.
+	  This manage LG Electronics charging scenarios.
+
+config LGE_PM_DEBUG_FS
+	bool "LG Electronic debugfs for power management"
+	depends on DEBUG_FS
+	default n
+	help
+	  Say Y here to support power devices debugfs.
+
+config LGE_PM_POWER_SYSFS
+	bool "LG Electronic unified power sysfs"
+	default n
+	help
+	  Say Y here to support unified power sysfs.
+
+config LGE_PM_PSEUDO_POWER_SUPPLY
+	bool "LG Electronic pseudo battery"
+	default n
+	help
+	  Say Y here to support fake battery.
+
+config LGE_PM_PSEUDO_BATTERY
+	bool "LG Electronic pseudo battery"
+	select LGE_PM_PSEUDO_POWER_SUPPLY
+	default n
+	help
+	  Say Y here to support fake battery.
+
+config LGE_PM_PSEUDO_HVDCP
+	bool "LG Electronic pseudo hvdcp"
+	select LGE_PM_PSEUDO_POWER_SUPPLY
+	default n
+	help
+	  Say Y here to support fake hvdcp.
+
+config LGE_PM_PUMP_EXPRESS_PLUS_ALGO
+	bool "LG Electronic pump express plus 1.0 / 2.0 software pulse"
+	default n
+	help
+	  Say Y here to support pump express plus 1.0 / 2.0 software pulse
+
+config LGE_PM_QNOVO_QNS
+	bool "QNOVO QNS System support"
+	default n
+	help
+	  Say Y to enable support QNOVO QNS system
+
+config LGE_PM_USB_ID
+	bool "Support LGE PM USB ID feature"
+	default n
+	help
+	  LGE PM USB ID about cable detection, etc
+
+config LGE_PM_WIRELESS_CHARGER
+	bool "Support LGE PM wireless charger"
+	default n
+	help
+	  Say Y here to support wireless charger.
+
+endif # LGE_PM
+
+config CHARGER_BQ25910
+	bool "Driver for Texas Instruments BQ25910 Charger IC"
+	default n
+	depends on MTK_CHARGER
+	help
+	  Say Yes to support Texas Instruments BQ25910.
+	  It is mainly used as slave IC for dual charger application.
+
+config CHARGER_BQ25970
+	bool "Texas Instruments BQ25970 Switched Cap Fast Charger"
+	default n
+	depends on MTK_CHARGER
+	help
+	  Say Yes to support Texas Instruments BQ25970.
+
+config CHARGER_MAX77932
+	bool "Maxim MAX77932 Dual Phase Switched Capacitor Converter"
+	default n
+	depends on MTK_CHARGER
+	select REGMAP_I2C
+	help
+	  This driver controls Maxim MAX77932 Dual Phase Switched Capacitor
+	  Converter via I2C bus. The converter delivers the output which is
+	  equal to the input voltage divided by 2. Say Y here to
+	  enable the charger driver for the converter.
+
+config WIRELESS_CHARGER_RX_RT1653
+	bool "Driver for Richtek RT1653 wireless charger receiver IC"
+	default n
+	depends on MTK_CHARGER
+	help
+	  Say Yes to support Richtek RT1653.
+
+config WIRELESS_CHARGER_RX_P9222
+	bool "Driver for IDT P9222 wireless charger receiver IC"
+	default n
+	depends on MTK_CHARGER
+	help
+	  Say Yes to support IDT P9222.

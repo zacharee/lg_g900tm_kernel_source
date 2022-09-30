@@ -1,0 +1,12 @@
+libVDStereoDepthJAR.so가 MPL 2.0을 사용하면서 
+소스 코드 공개가 되어야 함. ( 2020-08-21) (by 한일희C/여훈비S ) 
+==========================================================
+libVDStereoDepthJAR.so	Tensorflow	2.3.0	Apache 2.0
+libVDStereoDepthJAR.so	Eigen	3.3.7	MPL 2.0
+==========================================================
+libatomjpeg.so	libpng	1.6.10	Libpng	https://sourceforge.net/projects/libpng/files/libpng16/older-releases/
+libatomjpeg.so	zlib	1.2.7	Zlib	http://zlib.net/fossils/
+libatomjpeg.so	libnsbmp	0.1.3	MIT	https://www.netsurf-browser.org/projects/libnsbmp/
+libatomjpeg.so	libjpeg-turbo	1.02	IJG	https://libjpeg-turbo.org/
+libXIVCodec.so	libjpeg-turbo	1.02	IJG	https://libjpeg-turbo.org/
+==========================================================

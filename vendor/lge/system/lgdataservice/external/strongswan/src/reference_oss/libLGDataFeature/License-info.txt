@@ -1,0 +1,45 @@
+LGDataFeature.so 모듈 담당자(김병훈 선임)와 확인한 결과 
+오픈 소스 미 사용으로 확인이 되었고, 
+
+"MODULE_LICENSE_LGE_PROPRIETARY" tag 적용 결정 
+
+
+1)  MODULE_LICENSE_LGE_PROPRIETARY 라는 Tag   삽입 : 
+         - Binary/Library(*.apk, *.so, *.jar )를 생성하는 Android.mk 기준으로 삽입. 
+         - 오픈 소스 코드 미사용이므로 NOTICE 파일 추가하면 안됩니다. 
+         - *.apk, *.so, *.jar 소스 코드를 이루는 모든 소스 코드를 LG전자가 개발한 경우
+         "MODULE_LICENSE_LGE_PROPRIETARY"라는 empty 파일을 생성하여 해당 Directory에 적용 
+
+
+NOTICE 파일 삽입 방법 : Binary / Library를 지정하는 Android.mk 단위로 "오픈 소스 NOTICE 파일"과  "Tag 파일"이 적용 필요 
+         ☞ 주의 사항 :  Android.mk 파일의 내용이  "include $(call all-makefiles-under,$(LOCAL_PATH)) " 와 같은 경우에 넣으면 안되고, 
+                                Android.mk 파일의 내용이 "LOCAL_MODULE:= libFraunhoferAAC " 와 같이 LOCAL_MODULE &LOCAL_PACKAGE_NAME 을 
+                                명시하는 곳에 삽입 해야함. 
+
+=====================================================
+아래 가이드 확인 바랍니다. 
+
+system/lib64/LGDataFeature.so	vendor/lge/frameworks/base/LGDataFeature/lib
+
+
+system/lib64/LGDataFeature.so
+ 파일에 
+
+
+오픈 소스 미사용이라면 "vendor/lge/frameworks/base/LGDataFeature/lib" 디렉토리에 
+MODULE_LICENSE_LGE_PROPRIETARY 를 적용 바랍니다. 
+
+오픈 소스가 사용이 되었다면 오픈 소스 License에 맞는 NOTICE와 tag를 적용 바랍니다. 
+
+
+
+■ 오픈 소스 라이선스 가이드 
+
+   http://collab.lge.com/main/display/MCOSC/2.+Open+Source+License
+
+ 
+
+ ■ NOTICE & tag 삽입 가이드 
+
+  http://collab.lge.com/main/pages/viewpage.action?pageId=307607121
+

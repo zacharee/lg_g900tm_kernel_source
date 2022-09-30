@@ -1,0 +1,29 @@
+config LGE_DISPLAY_COMMON
+	bool "LGE DISPLAY COMMON"
+	default n
+	help
+	The LGE DISPLAY COMMON feature.
+
+config LGE_DISPLAY_TUNING_SUPPORT
+	bool "LGE DISPLAY TUNING SUPPORT"
+	default n
+	help
+	The LGE DISPLAY TUNING feature.
+
+config LGE_DISPLAY_RECOVERY
+	bool "LGE DISPLAY DRM RECOVERY"
+	default n
+	help
+	To support LGE ESD recovery for DRM routine.
+
+config LGE_DISPLAY_REFRESH_RATE_DIV
+	bool "LGE DISPLAY REFRESH RATE DIV"
+	default n
+	help
+	To support refresh rate divide for surfaceflinger.
+
+config LGE_VSYNC_SKIP
+	bool "LGE_VSYNC_SKIP"
+	default n
+	help
+    To support LGE VSYNC SKIP for DRM structure.

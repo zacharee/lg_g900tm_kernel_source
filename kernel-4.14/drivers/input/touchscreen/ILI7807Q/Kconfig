@@ -1,0 +1,12 @@
+#
+# ILITEK ILI7807Q touchscreen driver configuration
+#
+
+config TOUCHSCREEN_ILI7807Q
+	bool "ILITEK ILI7807Q"
+	default n
+	help
+	  Say Y here if you have a ILITEK ILI7807Q touchscreen connected
+	  to your system.
+
+	  If unsure, say N.

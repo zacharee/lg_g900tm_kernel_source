@@ -1,0 +1,264 @@
+/*
+ * Copyright (C) 2018 MediaTek Inc.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ */
+bat_gm30: battery{
+	compatible = "mediatek,bat_gm30";
+	/*	Charging termination current.*/
+	DIFFERENCE_FULLOCV_ITH = <(200)>;
+	/*	If ui_soc shows 1% more than X minites, system will shutdown.*/
+	SHUTDOWN_1_TIME = <(30)>;
+	/*	The ui_soc will keep 100% until SOC drop X percents after unplugged.*/
+	KEEP_100_PERCENT = <(1)>;
+	NO_BAT_TEMP_COMPENSATE = <(0)>;
+	/*	R_sense resistance.*/
+	R_FG_VALUE = <(5)>;
+	/*	Configures whether using embedded battery or not.*/
+	EMBEDDED_SEL = <(0)>;
+	/*	System shutdown current.*/
+	PMIC_SHUTDOWN_CURRENT = <(20)>;
+	/*	The resistance of PCB*/
+	FG_METER_RESISTANCE = <(75)>;
+	/*	Tune value for current measurement.*/
+	CAR_TUNE_VALUE = <(100)>;
+	/*	vboot voltage for gauge 0%*/
+	PMIC_MIN_VOL = <(33500)>;
+	/*	power on system iboot*/
+	POWERON_SYSTEM_IBOOT = <(500)>;
+	/*	shutdown gauge 0% voltage*/
+	SHUTDOWN_GAUGE0_VOLTAGE = <(34000)>;
+	/*	Battery temperature T0*/
+	TEMPERATURE_T0 = <(50)>;
+	/*	Battery temperature T1*/
+	TEMPERATURE_T1 = <(25)>;
+	/*	Battery temperature T2*/
+	TEMPERATURE_T2 = <(0)>;
+	/*	Battery temperature T3*/
+	TEMPERATURE_T3 = <(-10)>;
+	/*	Pseudo 100% percentage at T0.*/
+	g_FG_PSEUDO100_T0 = <(100)>;
+	/*	Pseudo 100% percentage at T1.*/
+	g_FG_PSEUDO100_T1 = <(100)>;
+	/*	Pseudo 100% percentage at T2.*/
+	g_FG_PSEUDO100_T2 = <(100)>;
+	/*	Pseudo 100% percentage at T3.*/
+	g_FG_PSEUDO100_T3 = <(100)>;
+	/*	System shut down voltage.*/
+	Q_MAX_SYS_VOLTAGE_BAT0 = <(3350)>;
+	/*	System shut down voltage.*/
+	Q_MAX_SYS_VOLTAGE_BAT1 = <(3350)>;
+	/*	System shut down voltage.*/
+	Q_MAX_SYS_VOLTAGE_BAT2 = <(3350)>;
+	/*	System shut down voltage.*/
+	Q_MAX_SYS_VOLTAGE_BAT3 = <(3350)>;
+
+	COM_FG_METER_RESISTANCE = <(100)>;
+	COM_R_FG_VALUE = <(0)>;
+	enable_tmp_intr_suspend = <(0)>;
+
+	/* battery temperature table type - NTC table */
+	RBAT_TYPE = <(10)>;
+	RBAT_PULL_UP_R = <(24000)>;
+
+	rbat_temperature_table_num = <21>;
+	rbat_battery_temperature =
+	<
+		(-40) 195652
+		(-35) 148171
+		(-30) 113347
+		(-25) 87559
+		(-20) 68237
+		(-15) 53650
+		(-10) 42506
+		(-5) 33892
+		0 27219
+		5 22021
+		10 17926
+		15 14674
+		20 12081
+		25 10000
+		30 8315
+		35 6948
+		40 5834
+		45 4917
+		50 4161
+		55 3535
+		60 3014 >;
+
+	MTK_CHR_EXIST = <(1)>;
+
+	SHUTDOWN_GAUGE0 = <(1)>;
+
+	SHUTDOWN_GAUGE1_XMINS = <(1)>;
+
+	SHUTDOWN_GAUGE1_VBAT_EN = <(0)>;
+	SHUTDOWN_GAUGE1_VBAT = <(34000)>;
+
+	LOW_TEMP_MODE = <(0)>;
+	LOW_TEMP_MODE_TEMP = <(0)>;
+
+
+	D0_SEL = <(0)>;
+	DLPT_UI_REMAP_EN = <0>;
+	AGING_SEL = <(0)>;
+
+	R_BAT_SENSE = <(4)>;
+	R_I_SENSE = <(4)>;
+
+	QMAX_SEL = <(1)>;
+	IBOOT_SEL = <(0)>;
+	SHUTDOWN_SYSTEM_IBOOT = <(15000)>;/* 0.1mA */
+
+	DIFFERENCE_FULL_CV = <(1000)>;/*0.01%*/
+
+	PSEUDO1_EN = <(1)>;
+	PSEUDO100_EN = <(1)>;
+	PSEUDO100_EN_DIS = <(0)>;
+
+	DIFF_SOC_SETTING = <(50)>;	/* 0.01% */
+	DIFF_BAT_TEMP_SETTING = <(1)>;
+	DIFF_BAT_TEMP_SETTING_C = <(10)>;
+	DISCHARGE_TRACKING_TIME = <(10)>;
+	CHARGE_TRACKING_TIME = <(60)>;
+	DIFFERENCE_FULLOCV_VTH = <(1000)>;	/* 0.1mV */
+	CHARGE_PSEUDO_FULL_LEVEL = <(9000)>;
+	FULL_TRACKING_BAT_INT2_MULTIPLY = <(1)>;
+
+	FG_PRE_TRACKING_EN = <(1)>;
+	VBAT2_DET_TIME = <(5)>;
+	VBAT2_DET_COUNTER = <(6)>;
+	VBAT2_DET_VOLTAGE1 = <(34500)>;
+	VBAT2_DET_VOLTAGE2 = <(32000)>;
+	VBAT2_DET_VOLTAGE3 = <(35000)>;
+
+	AGING_FACTOR_MIN = <(75)>;
+	AGING_FACTOR_DIFF = <(10)>;
+	DIFFERENCE_VOLTAGE_UPDATE = <(50)>;
+	AGING_ONE_EN = <(1)>;
+	AGING1_UPDATE_SOC = <(30)>;
+	AGING1_LOAD_SOC = <(70)>;
+	AGING_TEMP_DIFF = <(10)>;
+	AGING_TEMP_LOW_LIMIT = <(15)>;
+	AGING_TEMP_HIGH_LIMIT = <(50)>;
+	AGING_100_EN = <(1)>;
+
+	AGING_TWO_EN = <(1)>;
+
+	AGING_THIRD_EN = <(1)>;
+
+	HWOCV_SWOCV_DIFF = <(300)>;
+	HWOCV_SWOCV_DIFF_LT = <(1500)>;
+	HWOCV_SWOCV_DIFF_LT_TEMP = <(5)>;
+	HWOCV_OLDOCV_DIFF = <(600)>;
+	HWOCV_OLDOCV_DIFF_CHR = <(800)>;
+	SWOCV_OLDOCV_DIFF = <(600)>;
+	SWOCV_OLDOCV_DIFF_CHR = <(800)>;
+	VBAT_OLDOCV_DIFF = <(1000)>;
+	SWOCV_OLDOCV_DIFF_EMB = <(1000)>;
+
+	VIR_OLDOCV_DIFF_EMB = <(10000)>;
+	VIR_OLDOCV_DIFF_EMB_LT = <(10000)>;
+	VIR_OLDOCV_DIFF_EMB_TMP = <(5)>;
+
+	TNEW_TOLD_PON_DIFF = <(5)>;
+	TNEW_TOLD_PON_DIFF2 = <(15)>;
+	PMIC_SHUTDOWN_TIME = <(30)>;
+	BAT_PLUG_OUT_TIME = <(32)>;
+
+	EXT_HWOCV_SWOCV = <(300)>;
+	EXT_HWOCV_SWOCV_LT = <(1500)>;
+	EXT_HWOCV_SWOCV_LT_TEMP = <(5)>;
+
+	DIFFERENCE_FGC_FGV_TH1 = <(300)>;
+	DIFFERENCE_FGC_FGV_TH2 = <(400)>;
+	DIFFERENCE_FGC_FGV_TH3 = <(200)>;
+	DIFFERENCE_FGC_FGV_TH_SOC1 = <(7000)>;
+	DIFFERENCE_FGC_FGV_TH_SOC2 = <(3000)>;
+	NAFG_TIME_SETTING = <(10)>;
+	NAFG_RATIO = <(100)>;
+	NAFG_RATIO_EN = <(0)>;
+	NAFG_RATIO_TMP_THR = <(1)>;
+	NAFG_RESISTANCE = <(1500)>;
+
+	PMIC_SHUTDOWN_SW_EN = <(1)>;
+	FORCE_VC_MODE = <(0)>;
+
+	LOADING_1_EN = <(0)>;
+	LOADING_2_EN = <(2)>;
+	DIFF_IAVG_TH = <(3000)>;
+
+	ZCV_SUSPEND_TIME = <(29)>;
+	SLEEP_CURRENT_AVG = <(200)>; /*0.1mA*/
+	ZCV_CAR_GAP_PERCENTAGE = <(5)>;
+
+	DC_RATIO_SEL = <(5)>;
+	DC_R_CNT = <(1000)>;
+
+	RECORD_LOG = <(0)>;
+
+	BAT_PAR_I = <(4000)>;
+
+	PSEUDO1_SEL = <(2)>;
+
+	FG_TRACKING_CURRENT = <(30000)>;
+	FG_TRACKING_CURRENT_IBOOT_EN = <(0)>;
+	UI_FAST_TRACKING_EN = <(0)>;
+	UI_FAST_TRACKING_GAP = <(300)>;
+	KEEP_100_PERCENT_MINSOC = <(9000)>;
+
+	BATTERY_TMP_TO_DISABLE_GM30 = <(-50)>;
+	BATTERY_TMP_TO_DISABLE_NAFG = <(-35)>;
+	BATTERY_TMP_TO_ENABLE_NAFG = <(-20)>;
+	GM30_DISABLE_NAFG = <(0)>;
+
+	POWER_ON_CAR_CHR = <(150)>;
+	POWER_ON_CAR_NOCHR = <(-35)>;
+	SHUTDOWN_CAR_RATIO = <(1)>;
+	MIN_UISOC_AT_KPOC = <(100)>;
+
+	DISABLE_MTKBATTERY = <(0)>;
+
+	MULTI_TEMP_GAUGE0 = <(1)>;
+
+	OVER_DISCHARGE_LEVEL = <(-1500)>;
+
+	UISOC_UPDATE_TYPE = <(0)>;
+
+	UI_FULL_LIMIT_EN = <(0)>;
+	UI_FULL_LIMIT_SOC0 = <(9900)>;
+	UI_FULL_LIMIT_ITH0 = <(2200)>;
+	UI_FULL_LIMIT_SOC1 = <(9900)>;
+	UI_FULL_LIMIT_ITH1 = <(2200)>;
+	UI_FULL_LIMIT_SOC2 = <(9900)>;
+	UI_FULL_LIMIT_ITH2 = <(2200)>;
+	UI_FULL_LIMIT_SOC3 = <(9900)>;
+	UI_FULL_LIMIT_ITH3 = <(2200)>;
+	UI_FULL_LIMIT_SOC4 = <(9900)>;
+	UI_FULL_LIMIT_ITH4 = <(2200)>;
+	UI_FULL_LIMIT_TIME = <(99999)>;
+	MOVING_BATTEMP_EN = <(1)>;
+	MOVING_BATTEMP_THR = <(20)>;
+
+	UI_LOW_LIMIT_EN = <(1)>;
+	UI_LOW_LIMIT_SOC0 = <(200)>;
+	UI_LOW_LIMIT_VTH0 = <(34000)>;
+	UI_LOW_LIMIT_SOC1 = <(200)>;
+	UI_LOW_LIMIT_VTH1 = <(34000)>;
+	UI_LOW_LIMIT_SOC2 = <(200)>;
+	UI_LOW_LIMIT_VTH2 = <(34000)>;
+	UI_LOW_LIMIT_SOC3 = <(200)>;
+	UI_LOW_LIMIT_VTH3 = <(34000)>;
+	UI_LOW_LIMIT_SOC4 = <(200)>;
+	UI_LOW_LIMIT_VTH4 = <(34000)>;
+	UI_LOW_LIMIT_TIME = <(99999)>;
+
+#include "mt6885_battery_table.dtsi"
+};

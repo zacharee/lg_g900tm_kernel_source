@@ -1,0 +1,11 @@
+MODULE_LICENSE_GPL
+
+\vendor\lge\frameworks\sdencryption\ecryptfs-utils
+\vendor\lge\frameworks\sdencryption\keyutils
+\vendor\lge\frameworks\sdencryption\libgcrypt
+\vendor\lge\frameworks\sdencryption\libgpg-error
+
+You must share four folders as you see above lists of folders. 
+You must not disclose the source code of other folders. 
+
+\vendor\lge\frameworks\sdencryption 에서는 상기 네개의 폴더만 공개가 되어야 합니다. 

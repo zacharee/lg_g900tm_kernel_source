@@ -1,0 +1,48 @@
+/*
+ * LG Electronics MT6883 HDK mme device tree source
+ *
+ * Copyright (c) 2019 LG Electronics Co., Ltd.
+ *              http://www.lge.com
+ *
+ */
+
+/**********************************************
+ * MME driver bring up
+ ********************************************/
+
+/* All output lines were pulled down by PWM driver chipset internally. */
+&pio {
+    mme_default_cfg: mme_default_cfg {
+    };
+
+    mme_gpio_sleep_n0: mme_gpio_sleep_n0 {
+        pins_cmd_dat {
+            pinmux = <PINMUX_GPIO74__FUNC_GPIO74>;
+            slew-rate = <1>; /* direction 0:in, 1:out */
+            output-low;
+        };
+    };
+
+    mme_gpio_sleep_n1: mme_gpio_sleep_n1 {
+        pins_cmd_dat {
+            pinmux = <PINMUX_GPIO74__FUNC_GPIO74>;
+            slew-rate = <1>; /* direction 0:in, 1:out */
+            output-high;
+        };
+    };
+};
+
+&odm {
+    lge-mme {
+        compatible = "lge,mme";
+
+        pinctrl-names = "default", "mme_gpio_sleep_n0", "mme_gpio_sleep_n1";
+        pinctrl-0 = <&mme_default_cfg>;
+        pinctrl-1 = <&mme_gpio_sleep_n0>;
+        pinctrl-2 = <&mme_gpio_sleep_n1>;
+
+        lge,mme_sleep_n = <74>;
+
+        status = "okay";
+    };
+};

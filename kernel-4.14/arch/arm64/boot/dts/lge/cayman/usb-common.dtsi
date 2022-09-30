@@ -1,0 +1,139 @@
+/*
+ * Mediatek's mt6885 SoC device tree source
+ *
+ * Copyright (C) 2016 MediaTek Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+
+#include "usb-sls11hc.dtsi"
+#include "usb-switch-fusb251.dtsi"
+
+/* USB Type-C CC/SBU Protection Switch */
+&odm {
+	lge_sbu_switch {
+		compatible = "lge,lge_sbu_switch";
+
+		pinctrl-names = "default", "disable", "usbid", "aux", "uart";
+		pinctrl-0 = <&sbu_sw_usbid>;
+		pinctrl-1 = <&sbu_sw_usbid>;
+		pinctrl-2 = <&sbu_sw_usbid>;
+		pinctrl-3 = <&sbu_sw_aux>;
+		pinctrl-4 = <&sbu_sw_uart>;
+	};
+};
+
+&pio {
+	sbu_sw_usbid: sbu_sw_usbid {
+		sbu_sw_sel_1 {
+			pinmux = <PINMUX_GPIO101__FUNC_GPIO101>;
+			output-high;
+		};
+		uart_edp_sw_oe {
+			pinmux = <PINMUX_GPIO184__FUNC_GPIO184>;
+			output-high;
+		};
+		uart_edp_sw_sel {
+			pinmux = <PINMUX_GPIO185__FUNC_GPIO185>;
+			output-low;
+		};
+	};
+	sbu_sw_aux: sbu_sw_aux {
+		uart_edp_sw_sel {
+			pinmux = <PINMUX_GPIO185__FUNC_GPIO185>;
+			output-low;
+		};
+		uart_edp_sw_oe {
+			pinmux = <PINMUX_GPIO184__FUNC_GPIO184>;
+			output-low;
+		};
+		sbu_sw_sel_1 {
+			pinmux = <PINMUX_GPIO101__FUNC_GPIO101>;
+			output-low;
+		};
+	};
+	sbu_sw_uart: sbu_sw_uart {
+		uart_edp_sw_sel {
+			pinmux = <PINMUX_GPIO185__FUNC_GPIO185>;
+			output-high;
+		};
+		uart_edp_sw_oe {
+			pinmux = <PINMUX_GPIO184__FUNC_GPIO184>;
+			output-low;
+		};
+		sbu_sw_sel_1 {
+			pinmux = <PINMUX_GPIO101__FUNC_GPIO101>;
+			output-low;
+		};
+	};
+	lge_ds_en_active: lge_ds_en_active {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO188__FUNC_GPIO188>;
+			slew-rate = <0>;
+			bias-disable;
+		};
+	};
+	lge_acc_id_detect_en_active: lge_acc_id_detect_en_active {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO187__FUNC_GPIO187>;
+			slew-rate = <0>;
+			bias-pull-down;
+		};
+	};
+};
+
+/* TUSB546 DP/USB MUX */
+&i2c3 {
+	tusb546@12 {
+		compatible = "ti,tusb546";
+		reg = <0x12>;
+		status = "okay";
+		tusb546,pwr-en = <&pio 69 0>;
+
+		dp0eq_sel = /bits/ 8 <0x07>;
+		dp1eq_sel = /bits/ 8 <0x07>;
+		dp2eq_sel = /bits/ 8 <0x07>;
+		dp3eq_sel = /bits/ 8 <0x07>;
+		ssrx_eq1_sel = /bits/ 8 <0x07>;
+		ssrx_eq2_sel = /bits/ 8 <0x07>;
+		sstx_eq_sel = /bits/ 8 <0x07>;
+	};
+};
+
+/* Enable USB 3.0 Device */
+&mtu3_0 {
+	mediatek,usb3-drd;
+};
+
+/* vconn gpio */
+&mt6360_typec {
+	mt-tcpc,vconn_gpio = <&pio 84 0x0>;
+};
+
+/* LGE USB DS3 driver */
+&odm {
+	lge_usb_ds3: lge_usb_ds3 {
+		compatible = "lge,usb_ds3";
+		lge,load-sw-on-gpio = <&pio 189 0>;	/* DS_LOAD_SW_EN */
+		lge,ds-en-gpio = <&pio 188 0>;	/* DS_BOOST_EN */
+		lge,acc-id-detect-en-gpio = <&pio 187 0>;	/* DS_ID_LDO_EN */
+		extcon = <&extcon_usb>;
+
+		io-channels	= <&auxadc 3>;
+		io-channel-names	= "thermistor-ch3";
+		lge,acc-high-thr = <770>;
+		lge,acc-low-thr = <670>;
+		lge,acc_det_vadc;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&lge_ds_en_active
+						&lge_acc_id_detect_en_active>;
+	};
+};

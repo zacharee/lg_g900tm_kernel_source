@@ -1,0 +1,12 @@
+License is identified with Apache 2.0 
+But this directory MUST be disclosed by the influence of libnl.a ( LGPL2.1)
+
+#############################################################
+
+this binary file included the libnl.a static library  
+
+      So there are two open source license in this binary. 
+
+      LGPL 2.1 and Apache License 2.0
+
+So LGE disclose the source code instead of object file of "android-clat". 

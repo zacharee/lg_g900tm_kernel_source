@@ -1,0 +1,63 @@
+/*
+ * Mediatek's mt6885 SoC device tree source
+ *
+ * Copyright (C) 2016 MediaTek Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+/dts-v1/;
+/plugin/;
+
+#include "common.dtsi"
+#include "common_lge.dtsi"
+#include "common_lao.dtsi"
+/{
+	board {
+		/*
+		   typedef enum {
+		   HW_REV_0 = 0,
+		   HW_REV_0_1,
+		   HW_REV_A,
+		   HW_REV_B,
+		   HW_REV_C,
+		   HW_REV_D,
+		   HW_REV_1_0,
+		   HW_REV_1_1,
+		   HW_REV_MAX
+		   } rev_type;
+		 */
+		lge,pcb_revision = <0x3>; // rev_B
+	};
+};
+
+&i2c3 {
+	p9222@61 {
+		status = "disabled";
+	};
+};
+
+/* Fix USB path for Rev B */
+&usb_boost_manager {
+	pinctrl-names = "default", "otg_disable", "otg_enable";
+	pinctrl-0 = <&otg_boost_enable>;
+	pinctrl-1 = <&otg_boost_enable>;
+	pinctrl-2 = <&otg_boost_enable>;
+};
+
+/* Do not enable below
+#include <muse6883_64_hdk_q/cust.dtsi>
+*/
+
+#define GPIO96_PRESET 96 0 1 1 1 0 0
+#define GPIO98_PRESET 98 0 1 1 1 0 0
+#define GPIO137_PRESET 137 0 1 1 0 0 0
+#include "cust.dtsi"
+
+/*End of this file, DO NOT ADD ANYTHING HERE*/

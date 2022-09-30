@@ -1,0 +1,40 @@
+/* Copyright (c) 2020, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ */
+
+&i2c3 {
+	status = "ok";
+
+	fusb251@28 {
+		compatible = "lge,fusb251";
+		status = "ok";
+		reg = <0x28>;
+
+		interrupt-parent = <&pio>;
+		interrupts = <80 IRQ_TYPE_EDGE_FALLING 80 0>;
+
+		fusb251,intb-gpio = <&pio 80 0>;
+		intb_pu18-supply = <&mt_pmic_vio18_ldo_reg>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&fusb251_intb_active>;
+	};
+};
+
+&pio {
+	fusb251_intb_active: fusb251_intb_active {
+	     pins_cmd_dat {
+		     pinmux = <PINMUX_GPIO80__FUNC_GPIO80>;
+		     input-enable;
+		     bias-disable;
+	     };
+	};
+};

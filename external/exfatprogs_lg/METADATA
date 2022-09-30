@@ -1,0 +1,17 @@
+name: "exfatprogs"
+description:
+    "exFAT filesystem userspace utilities"
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://github.com/exfatprogs/exfatprogs"
+  }
+  url {
+    type: GIT
+    value: "https://github.com/exfatprogs/exfatprogs.git"
+  }
+  version: "7c3b61769bb04eaafedf245db396813bbcfb2b0a"
+  last_upgrade_date { year: 2020 month: 8 day: 3 }
+  license_type: NOTICE
+}

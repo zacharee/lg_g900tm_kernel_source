@@ -1,0 +1,5 @@
+config LGE_USB_TUSB546
+	bool "USB Type-C/DP Crosspoint Switch Driver"
+	help
+	  Say Y here to add support for TI TUSB546A Type-C/DP Crosspoint Switch
+	  Driver.

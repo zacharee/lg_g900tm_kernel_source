@@ -1,0 +1,10 @@
+MODULE_LICENSE_FreeImage Public License is like MPL
+Source code MUST be disclosed with only file unit. 
+
+FreeImage Public License is weakcopyleft. 
+
+http://collab.lge.com/main/display/FOSS/FreeImage#test-60895824 : License guide 
+
+==============================================
+FIPL License 사용에 대한 고지 (NOTICE File)
+FIPL 이 적용된 원본 소스와 수정한 부분의 소스는 공개하고, FIPL 소스 파일과 분리된 새로 추가한 자사 파일은 공개할 필요가 없음.
