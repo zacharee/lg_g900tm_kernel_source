@@ -1,0 +1,24 @@
+config CUSTOM_KERNEL_CHARGEPUMP
+	bool "chargepump Support"
+	default n
+	help
+	  This feature Option is used for projects which using exteranl backlight driver
+	  if you want to  external backlight driver, please turn on this feature first,
+	  then LED driver call external backlight driver API.
+	  Also this feature related to flashlight and DSV driver.
+
+config LGE_CHARGEPUMP_LM36272
+	bool "LM36272 LED DSV chargepump"
+	default n
+	help
+	  charge pump driver for external backlight and flashlight
+	  it support DSV, flashlight, LED module.
+	  if you want to use external backlight driver moulde on your project,
+	  please turn on chargepump option also.
+
+config LGE_USE_BRIGHTNESS_TABLE
+	bool "Support backlight controlled by lge brightness table"
+	---help---
+	  This option enables support brightness table to set brightness.
+	  Set y to support.
+	  Set n to not support.

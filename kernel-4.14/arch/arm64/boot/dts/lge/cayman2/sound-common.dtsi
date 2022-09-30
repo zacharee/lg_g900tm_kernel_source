@@ -1,0 +1,53 @@
+/*
+ * Mediatek's mt6885 SoC device tree source
+ *
+ * Copyright (C) 2016 MediaTek Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+&i2c3 {
+	status = "okay";
+	dw7800@59 {
+		compatible = "dongwoon,dw7800";
+		reg = <0x59>;
+		dongwoon,vpwr-on = <0>;
+		status = "okay";
+	};
+};
+
+
+&i2c6 {
+	/*Left*/
+	tfa98xx_top:tfa98xx@34 {
+		compatible = "nxp,tfa98xx";
+		reg = <0x34>;
+		status = "okay";
+		reset-gpio = <&pio 30 0>;
+		irq-gpio = <&pio 31 0>;
+		reset-polarity = <0>;
+	};
+	/*Right*/
+	tfa98xx_bottom:tfa98xx@35 {
+		compatible = "nxp,tfa98xx";
+		reg = <0x35>;
+		status = "okay";
+	};
+};
+
+&sound {
+	compatible = "mediatek,mt6885-mt6359-sound";
+	mediatek,audio-codec = <&mt6359_snd>;
+	mediatek,platform = <&afe>;
+	mtk_spk_i2s_out = <3>;
+	mtk_spk_i2s_in = <9>;
+
+	ext-codec = <&tfa98xx_top>, <&tfa98xx_bottom>;
+	ext-codec-names = "tfa98xx-codec.6-0034", "tfa98xx-codec.6-0035";
+};

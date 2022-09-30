@@ -1,0 +1,11 @@
+config LGE_DISPLAY_COMMON
+	bool "LGE DISPLAY COMMON"
+	default n
+	help
+	The LGE DISPLAY COMMON feature.
+
+config LGE_DISPLAY_TUNING_SUPPORT
+	bool "LGE DISPLAY TUNING SUPPORT"
+	default n
+	help
+	The LGE DISPLAY TUNING feature.

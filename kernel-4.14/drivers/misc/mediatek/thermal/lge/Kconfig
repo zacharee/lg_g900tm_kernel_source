@@ -1,0 +1,13 @@
+config LGE_PM_VTS
+	bool "LG Electronic Virtual Thermal Sensor"
+	default n
+	depends on LGE_PM && THERMAL
+	help
+	  Virtual Sensor representing real world temperature
+
+config LGE_PM_BACKLIGHT_COOLER
+	bool "LG Electronic Backlight Cooler Scenario"
+	default n
+	depends on LGE_PM && THERMAL
+	help
+	  Say Y to apply LG Electronics backlight cooler behavior

@@ -1,0 +1,9 @@
+
+아래와 같이 고지 문구에 copyrighter 정보를 적용함. ( 2017.03.15. by Han IL HEE ) 
+
+ Idea:       Oliver Hartkopp <oliver.hartkopp@volkswagen.de>
+ Copyright:  (c) 2011 Czech Technical University in Prague
+             (c) 2011 Volkswagen Group Research
+ Authors:    Michal Sojka <sojkam1@fel.cvut.cz>
+             Pavel Pisa <pisa@cmp.felk.cvut.cz>
+             Rostislav Lisovy <lisovy@gmail.cz>

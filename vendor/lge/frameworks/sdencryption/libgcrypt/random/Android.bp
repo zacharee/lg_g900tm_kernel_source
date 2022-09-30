@@ -1,0 +1,22 @@
+
+cc_library_static {
+    name: "libgcrypt-random",
+    include_dirs: [
+        "vendor/lge/frameworks/sdencryption/libgcrypt",
+        "vendor/lge/frameworks/sdencryption/libgcrypt/src",
+        "vendor/lge/frameworks/sdencryption/libgpg-error/src/",
+    ],
+    cflags: [
+        "-Wall",
+        "-DHAVE_CONFIG_H",
+    ],
+    srcs: [
+        "random.c",
+        "random-csprng.c",
+        "random-fips.c",
+        "rndhw.c",
+        "rndlinux.c",
+    ],
+    header_libs: ["libgpg-error_headers"],
+}
+

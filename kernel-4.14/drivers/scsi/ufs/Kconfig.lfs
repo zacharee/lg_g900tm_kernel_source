@@ -1,0 +1,16 @@
+config LFS_UFS
+	bool
+	default y if LFS_COMMON
+
+config LFS_UFS_SYSFS_COMMON
+	bool
+	default y if LFS_COMMON
+
+config LGE_UFS_PWR_MODE_CHANGE
+	depends on MACH_LGE
+	bool "LGE UFS power mode change feature"
+	default n
+	help
+		Say y here to support LGE UFS power mode change feature.
+		LGE_UFS_PWR_MODE_CHANGE is related with LGE Specific.
+		We try to change UFS VCCQ power mode with temperature condition.

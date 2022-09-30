@@ -1,0 +1,24 @@
+cc_library_shared {
+    name: "liblge_effectchainresampler",
+
+    srcs: [
+        "src/ResampleClass.cpp",
+    ],
+
+    include_dirs: [
+        "vendor/lge/frameworks/av/libs/lgeEffectChain/Resampler/inc",
+        "vendor/lge/frameworks/av/libs/lgeEffectChain/Resampler/interface",
+        "vendor/lge/frameworks/av/libs/lgeEffectChain/EffectChain/inc",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libutils"
+    ],
+
+    cflags: [
+        "-O3"
+    ],
+
+}

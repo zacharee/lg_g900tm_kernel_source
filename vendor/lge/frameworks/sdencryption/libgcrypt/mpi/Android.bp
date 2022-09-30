@@ -1,0 +1,43 @@
+
+cc_library_static {
+    name: "libgcrypt-mpi",
+    include_dirs: [
+        "vendor/lge/frameworks/sdencryption/libgcrypt",
+        "vendor/lge/frameworks/sdencryption/libgcrypt/src",
+        "vendor/lge/frameworks/sdencryption/libgpg-error/src/",
+    ],
+    cflags: [
+        "-Wall",
+        "-marm",
+    ],
+
+    srcs: [
+        "ec.c",
+        "mpi-add.c",
+        "mpi-bit.c",
+        "mpi-cmp.c",
+        "mpi-div.c",
+        "mpi-gcd.c",
+        "mpi-inline.c",
+        "mpi-inv.c",
+        "mpi-mul.c",
+        "mpi-mod.c",
+        "mpi-pow.c",
+        "mpi-mpow.c",
+        "mpi-scan.c",
+        "mpicoder.c",
+        "mpih-div.c",
+        "mpih-mul.c",
+        "mpiutil.c",
+        "generic/mpih-add1.c",
+        "generic/mpih-sub1.c",
+        "generic/mpih-mul1.c",
+        "generic/mpih-mul2.c",
+        "generic/mpih-mul3.c",
+        "generic/mpih-lshift.c",
+        "generic/mpih-rshift.c",
+    ],
+
+    header_libs: ["libgpg-error_headers"],
+}
+

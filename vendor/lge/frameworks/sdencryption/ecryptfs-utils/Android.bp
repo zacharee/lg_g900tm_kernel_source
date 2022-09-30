@@ -1,0 +1,62 @@
+cc_defaults {
+    name: "ecryptfs-utils_defaults",
+
+    local_include_dirs: [
+        "src/include",
+    ],
+
+    include_dirs: [
+        "vendor/lge/frameworks/sdencryption/libgcrypt/src",
+        "vendor/lge/frameworks/sdencryption/libgpg-error/src/",
+    ],
+    cflags: [
+        "-Wall",
+        "-DHAVE_CONFIG_H",
+    ],
+    product_specific: true,
+}
+
+cc_library_shared {
+    name: "libecryptfs",
+    defaults: ["ecryptfs-utils_defaults"],
+    srcs: [
+        "src/libecryptfs/main.c",
+        "src/libecryptfs/messaging.c",
+        "src/libecryptfs/packets.c",
+        "src/libecryptfs/netlink.c",
+        "src/libecryptfs/miscdev.c",
+        "src/libecryptfs/sysfs.c",
+        "src/libecryptfs/key_management.c",
+        "src/libecryptfs/decision_graph.c",
+        "src/libecryptfs/cmd_ln_parser.c",
+        "src/libecryptfs/module_mgr.c",
+        "src/libecryptfs/key_mod.c",
+        "src/libecryptfs/ecryptfs-stat.c",
+        "src/key_mod/ecryptfs_key_mod_passphrase.c",
+    ],
+
+    shared_libs: [
+        "libgcrypt",
+        "libgpg-error",
+        "libkeyutils",
+        "libutils",
+        "libdl",
+    ],
+}
+
+cc_library_shared {
+    name: "libecryptfs_key_mod_passphrase",
+    defaults: ["ecryptfs-utils_defaults"],
+    srcs: [
+        "src/key_mod/ecryptfs_key_mod_passphrase.c",
+    ],
+
+    shared_libs: [
+        "libgcrypt",
+        "libgpg-error",
+        "libkeyutils",
+        "libecryptfs",
+        "libutils",
+        "libdl",
+    ],
+}

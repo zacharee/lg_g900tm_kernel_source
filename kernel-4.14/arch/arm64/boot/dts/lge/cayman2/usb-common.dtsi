@@ -1,0 +1,97 @@
+/*
+ * Mediatek's mt6885 SoC device tree source
+ *
+ * Copyright (C) 2016 MediaTek Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+
+#include "usb-sls11hc.dtsi"
+
+/* USB Type-C CC/SBU Protection Switch */
+&odm {
+	lge_sbu_switch {
+		compatible = "lge,lge_sbu_switch";
+
+		pinctrl-names = "default", "disable", "usbid", "aux", "uart";
+		pinctrl-0 = <&sbu_sw_usbid>;
+		pinctrl-1 = <&sbu_sw_usbid>;
+		pinctrl-2 = <&sbu_sw_usbid>;
+		pinctrl-3 = <&sbu_sw_aux>;
+		pinctrl-4 = <&sbu_sw_uart>;
+	};
+};
+
+&pio {
+	sbu_sw_usbid: sbu_sw_usbid {
+		sbu_sw_sel_1 {
+			pinmux = <PINMUX_GPIO101__FUNC_GPIO101>;
+			output-low;
+		};
+		uart_edp_sw_oe {
+			pinmux = <PINMUX_GPIO184__FUNC_GPIO184>;
+			output-high;
+		};
+		uart_edp_sw_sel {
+			pinmux = <PINMUX_GPIO185__FUNC_GPIO185>;
+			output-low;
+		};
+	};
+	sbu_sw_aux: sbu_sw_aux {
+		uart_edp_sw_sel {
+			pinmux = <PINMUX_GPIO185__FUNC_GPIO185>;
+			output-low;
+		};
+		uart_edp_sw_oe {
+			pinmux = <PINMUX_GPIO184__FUNC_GPIO184>;
+			output-low;
+		};
+		sbu_sw_sel_1 {
+			pinmux = <PINMUX_GPIO101__FUNC_GPIO101>;
+			output-high;
+		};
+	};
+	sbu_sw_uart: sbu_sw_uart {
+		uart_edp_sw_sel {
+			pinmux = <PINMUX_GPIO185__FUNC_GPIO185>;
+			output-high;
+		};
+		uart_edp_sw_oe {
+			pinmux = <PINMUX_GPIO184__FUNC_GPIO184>;
+			output-low;
+		};
+		sbu_sw_sel_1 {
+			pinmux = <PINMUX_GPIO101__FUNC_GPIO101>;
+			output-high;
+		};
+	};
+};
+
+/* ANX7418 DP/USB MUX */
+&i2c3 {
+	anx7418@28 {
+		compatible = "analogix,anx7418";
+		reg = <0x28>;
+		status = "okay";
+		anx7418,pwr-en = <&pio 69 0>;
+		anx7418,resetn = <&pio 70 0>;
+		avdd-supply = <&mt_pmic_vibr_ldo_reg>;
+	};
+};
+
+/* Enable USB 3.0 Device */
+&mtu3_0 {
+	mediatek,usb3-drd;
+};
+
+/* vconn gpio */
+&mt6360_typec {
+	mt-tcpc,vconn_gpio = <&pio 84 0x0>;
+};

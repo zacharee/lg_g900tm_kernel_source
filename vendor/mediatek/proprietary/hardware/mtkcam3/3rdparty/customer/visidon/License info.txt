@@ -1,0 +1,4 @@
+
+3rdParty_Visidon에서 납품하는 SW에
+Eigen 이라는 MPL License 를 갖는 오픈 소스를 사용함을 확인됩니다. ( 2019-10-21 ) 
+

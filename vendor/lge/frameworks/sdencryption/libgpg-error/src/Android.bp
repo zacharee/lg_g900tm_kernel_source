@@ -1,0 +1,22 @@
+
+cc_library_shared {
+    name: "libgpg-error",
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+    product_specific: true,
+
+    srcs: [
+        "init.c",
+        "strsource.c",
+        "strerror.c",
+        "code-to-errno.c",
+        "code-from-errno.c",
+    ],
+}
+
+cc_library_headers {
+    name: "libgpg-error_headers",
+    export_include_dirs: ["include"],
+}

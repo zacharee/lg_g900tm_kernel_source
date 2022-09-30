@@ -1,0 +1,4 @@
+
+
+dnsmasq is Copyright (c) 2000-2009 Simon Kelley 
+-> inserted copyrighter information by han il hee April 6th in 2017. 

@@ -1,0 +1,249 @@
+config MACH_LGE
+	bool
+
+menu "LGE Board Selection"
+
+config MACH_MT6885_CAYMAN
+	bool "MT6885 CAYMAN"
+	depends on MACH_MT6885
+	select MACH_LGE
+
+config MACH_MT6885_CAYMAN_LAO
+	bool "MT6885 CAYMAN LAO"
+	depends on MACH_MT6885
+	select MACH_MT6885_CAYMAN
+
+config MACH_MT6885_CAYMAN2
+	bool "MT6885 CAYMAN2"
+	depends on MACH_MT6885
+	select MACH_LGE
+
+config MACH_MT6885_CAYMAN2_KR
+	bool "MT6885 CAYMAN2 KR"
+	depends on MACH_MT6885
+	select MACH_MT6885_CAYMAN2
+
+config MACH_MT6885_CAYMAN2_LAO
+	bool "MT6885 CAYMAN2 LAO"
+	depends on MACH_MT6885
+	select MACH_MT6885_CAYMAN2
+
+config MACH_MT6885_CAYMAN2_LDU
+	bool "MT6885 CAYMAN2 LDU"
+	depends on MACH_MT6885
+	select MACH_MT6885_CAYMAN2
+
+config LGE_PM_PRM
+	tristate "Support LGE Power resource manager"
+	help
+	  LGE power resource manager
+
+endmenu
+
+
+config T32_ON_MTK
+	bool "MediaTek T32 support"
+	default n
+
+config LGE_EARJACK_DEBUGGER
+	bool "Earjack UART debugger support"
+	default n
+	depends on MACH_LGE
+	help
+		Support earjack type UART debugger cable
+
+config LGE_BOOTLOADER_LOG
+	tristate "Support LGE bootloader log"
+	default n
+	depends on MACH_LGE
+	help
+		LGE bootloader log
+
+config LGE_RTC_TIMESTAMP
+	depends on MACH_LGE
+	bool "Support showing RTC timestamp in kernel message"
+	default n
+	help
+		Say y here to shows RTC timestamp in kernel message.
+
+config PRE_SELF_DIAGNOSIS
+	tristate "Support LGE self diagnosis for factory"
+	default n
+	depends on MACH_LGE
+	help
+
+config LGE_PM
+	depends on MACH_LGE
+	bool "LGE Power Feature"
+	default n
+	help
+		Say y here to support LGE Power Feature.
+		LGE_PM is related with LGE Specific.
+		Power manangment, Battery Charging, Fuel Gauge, Thermal and ETC.
+
+config LGE_PM_DEBUG
+	depends on MACH_LGE
+	bool "LGE Power Debug Feature"
+	default n
+	help
+		Say y here to support LGE Power Debug Log Feature.
+		LGE_PM_DEBUG is related with LGE Specific.
+		Clock,GPIO,PMIC_regs dump log.
+
+config LGE_PM_AT_POWEROFF
+	boolean "power cycle when factory cable is connected"
+	default n
+	help
+	  In case of the phone with embedded battery, power cycle is implemented
+	  when factory cable is connected.
+
+config LGE_LEDS
+	bool "LG Electroncis LED Notification Scenario"
+	default n
+	depends on MACH_LGE && LEDS_TRIGGERS
+	help
+		Say y here to support LG electronics LED notification scenario.
+
+config LGE_USB_DEBUGGER
+	bool "USB UART debugger support"
+	default n
+	depends on MACH_LGE
+	help
+		Support USB UART debugger cable
+
+config LGE_HALLIC
+	bool "Generic Hall IC Driver"
+	default n
+
+config STYLUS_PEN_DETECTION
+	bool "Generic Pen Detection"
+	depends on LGE_HALLIC
+	default n
+
+config LGE_BOOT_MODE
+	bool "Support Get Booting mode from cmdline"
+	depends on MACH_LGE
+	default n
+	help
+		This is get bootimg mode from cmdline. And that mode is
+		offers to any module by using lge_get_boot_mode API.
+
+config LGE_HANDLE_PANIC
+	bool "LG Kernel Crash Handler"
+	default n
+	help
+		Set LG Kernel Crash Handler
+
+config LGE_HANDLE_PANIC_MTK_EMI_MPU
+	bool "LG Kernel Crash Handler for MTK EMI MPU"
+	depends on LGE_HANDLE_PANIC && MTK_EMI_MPU
+	default n
+	help
+		This feature is for EMI MPU Violation.
+		If MTK EMI MPU Violation happens, force to crash.
+
+config LGE_HANDLE_PANIC_BY_KEY
+	bool "Generate panic by pressing keys"
+	default n
+	help
+		Set key panic
+
+config LGE_QFPROM_INTERFACE
+	bool "Support LGE EFuse inferface"
+	default n
+	help
+		LGE EFuse interface
+
+config LGE_QFPROM_SECHASH
+	depends on LGE_QFPROM_INTERFACE
+	string "Support LGE EFuse partition hash"
+	default 0x0
+	help
+		LGE EFuse partition hash value
+
+config LGE_DM_VERITY_RECOVERY
+	tristate "Support dm verity corrupt recovery"
+	default y
+	depends on MACH_LGE
+	help
+		Sometimes, dm-bufio has invalid data. If data is corrupted,
+		try to recover data.
+
+config LGE_MTK_RTB
+	bool "Register tracing"
+	help
+	  Add support for logging different events to a small uncached
+	  region. This is designed to aid in debugging reset cases where the
+	  caches may not be flushed before the target resets.
+
+config LGE_MTK_RTB_SEPARATE_CPUS
+	bool "Separate entries for each cpu"
+	depends on LGE_MTK_RTB
+	depends on SMP
+	help
+	  Under some circumstances, it may be beneficial to give dedicated space
+	  for each cpu to log accesses. Selecting this option will log each cpu
+	  separately. This will guarantee that the last acesses for each cpu
+	  will be logged but there will be fewer entries per cpu
+
+config LGE_PANIC_ON_WDTK_RT_THROTTLING
+	bool "panic on wdtk rt throttling"
+	depends on MT_RT_THROTTLE_MON
+	default n
+	help
+	  Under some circumstances, RT Throttling could occur.
+	  So, linux system dequeued top of rt. However, if the wdtk thread becomes
+	  the target, the watchdog timeout occurs after dequeued.
+	  We need to make kernel panic before the thread dequeued to debug it.
+
+config LGE_LCD_OFF_DIMMING
+	tristate "Support LGE LCD off dimming reboot"
+	default n
+	depends on MACH_LGE
+	help
+	Support lcd off or dimming reboot when reboot reason is "LCD off"
+	lcd stay dimming until lcd is off and on again.
+
+config LGE_DRAM_WR_BIAS_OFFSET
+	bool "Support LGE DRAM WRITE BIAS OFFSET"
+	default n
+	depends on MACH_LGE
+	depends on LGE_HANDLE_PANIC
+	help
+	Support setting WR BIAS OFFSET to test passzone for "-" area.
+
+config LGE_MME_TEST
+	bool "MME Kernel Driver for KC authentication"
+	default n
+	help
+		MME Kernel Driver for KC authentication
+
+config LFS_COMMON
+	bool "Support LGE Filesystem Kernel Feature"
+	default y if MACH_LGE
+	select NLS_UTF8
+	help
+		Say 'y' here to enable LGE Filesystem Features
+
+config LGE_MME_DRV
+	bool "MME Real Kernel Driver"
+	default n
+	help
+		MME Real Driver
+
+config LGE_USB_SBU_SWITCH
+	bool "LGE USB Type-C CC/SBU Protection Switch driver"
+	help
+	  Say y if this must be needed.
+
+config LGE_DUAL_SCREEN
+        bool "Support Dual Screen"
+        depends on MACH_LGE
+        help
+          Say 'y" here to include support for dual screen.
+
+config LGE_DUAL_SCREEN_DISABLE
+	bool "Block Dual Screen Behavior"
+	depends on LGE_DUAL_SCREEN
+	help
+	 It's used for blocking ds sm

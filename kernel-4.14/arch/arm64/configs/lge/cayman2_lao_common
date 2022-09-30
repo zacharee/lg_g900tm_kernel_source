@@ -1,0 +1,6 @@
+include lge/cayman2_common
+CONFIG_BUILD_ARM64_DTB_OVERLAY_IMAGE_NAMES="lge/cayman2/lao-overlay_rev"
+CONFIG_MACH_MT6885_CAYMAN2_LAO=y
+# 2017-12-29 http://mlm.lge.com/di/browse/GLOBALDATA-792 [START]
+CONFIG_XFRM_FRAG_ESP_BEFORE_TUNNEL_ENC=y
+# 2017-12-29 http://mlm.lge.com/di/browse/GLOBALDATA-792 [END]

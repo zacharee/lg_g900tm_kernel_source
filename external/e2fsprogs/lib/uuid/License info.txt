@@ -1,0 +1,9 @@
+
+NOTICE was made of "copyright" and "license" information. 
+But this notice is empty about the part of "copyright" in the NOTICE file. 
+
+So I added that information as follows. (by han il hee ) 
+
+
+Internal routine for packing UUID's
+Copyright (C) 1996, 1997 Theodore Ts'o.

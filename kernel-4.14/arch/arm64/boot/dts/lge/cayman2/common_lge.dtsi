@@ -1,0 +1,8 @@
+#include "power-common.dtsi"
+#include "sound-common.dtsi"
+#include "display.dtsi"
+#include "nfc-common.dtsi"
+#include "usb-common.dtsi"
+#include "touch-common.dtsi"
+#include "sensor-common.dtsi"
+#include "mme.dtsi"

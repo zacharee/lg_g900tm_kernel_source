@@ -1,0 +1,40 @@
+
+cc_library_shared {
+    name: "libgcrypt",
+    include_dirs: [
+        "vendor/lge/frameworks/sdencryption/libgcrypt",
+        "vendor/lge/frameworks/sdencryption/libgpg-error/src/",
+    ],
+    cflags: [
+        "-Wall",
+    ],
+    product_specific: true,
+
+    srcs: [
+        "ath.c",
+        "fips.c",
+        "global.c",
+        "hmac256.c",
+        "hwfeatures.c",
+        "misc.c",
+        "missing-string.c",
+        "module.c",
+        "secmem.c",
+        "sexp.c",
+        "stdmem.c",
+        "visibility.c",
+    ],
+
+    shared_libs: [
+        "libgpg-error",
+    ],
+
+    static_libs: [
+        "libgcrypt-cipher",
+        "libgcrypt-mpi",
+        "libgcrypt-random",
+    ],
+
+    header_libs: ["libgpg-error_headers"],
+}
+

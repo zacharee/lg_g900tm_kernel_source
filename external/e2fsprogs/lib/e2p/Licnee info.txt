@@ -1,0 +1,129 @@
+http://clm.lge.com/issue/browse/OSC-4585
+아래 건에 대해선 Binary DB 수정 검토를 부탁드립니다. 
+
+제가 직접 모두 소스 코드를 확인 및 검토를 하였습니다. 
+
+아래 이슈들로 하여 OSC 리뷰가 늦어지고 있습니다. ( reject 사유 ) 
+
+참고로 패키지의 효율성을 고려하여  
+
+Android Platform packaging시에  "android/external/e2fsprogs" 내부에 모두 소스 코드를 패키징하고 있습니다. 
+
+ 
+
+결정을 해주시는 대로 내부적으로 수정을 하겠습니다. 
+
+external/e2fsprogs 폴더에서 생성되는 다른 binary는 Binary DB와 일치하기는 하지만 
+
+타 사업부의  "e2fsprogs "와 License가 상이한 경우가 존재합니다. 
+
+============================================================
+
+1. android/external/e2fsprogs/lib/blkid " 폴더 
+
+ 
+
+  libext2_blkid.so 와 libext2_blkid.a 
+
+ 
+
+    android/external/e2fsprogs/lib/blkid/version.c  파일이 GPL 2.0이기 때문입니다.    
+
+    Binary DB에서 GPL 2.0와 LGPL 2.1로 분류가 되는 이유는 
+
+    나머지 모든 파일은 LGPL 2.0이고 
+
+    version.c 파일만을 보고 LGPL 2.1으로 판단하기에는  애매합니다. 
+
+    확인 및 Binary DB 일괄 수정을 부탁합니다. 
+
+    제 판단은 LGP 2.1이 맞아 보입니다. 
+
+ 
+
+2. external/e2fsprogs/lib/e2p 폴더 
+
+   libext2_e2p.so 와 libext2_e2p.a 
+
+   android/external/e2fsprogs/lib/e2p/Makefile.in 파일이 GPL 2.0 이기 때문에 
+
+   Binary DB에서 GPL 2.0와 LGPL 2.1로 분류가 되는 이유입니다. 
+
+   ※ Makefile.in 파일은 Android build 시에 사용하지 않는 것으로 보입니다. Android.bp 파일이 사용됨. 
+
+ 
+
+   Makefile.in 파일을 제외한 전체적인 소스 기준으로 볼 때 OSL 판단은 LGP 2.1이 맞아 보입니다. 
+
+ 
+
+3. external/e2fsprogs/lib/support 폴더 
+
+   libext2_quota.so 와 libext2_quota.a 
+
+    
+
+  external/e2fsprogs/lib/support/plausible.c 파일이 GPL 2.0으로 
+
+  상기 파일에 모두 plausible.c이 사용되므로 
+
+   Binary DB에서 GPL 2.0로 모두 수정을 부탁합니다. 
+
+ 
+
+4. external/e2fsprogs/lib/uuid 의 경우  ( binary name : libext2_uuid.so ) 
+
+   Binary DB Search에서 [1131]LANR16.B63RH2K Project에서는 GPL 2.0으로 판단함. 
+
+   단말사업부는 모두 BSD-3-Clause로 판단함. 
+
+ 
+
+5. system/bin/tune2fs 에서 tune2fs binary는 (  Binary DB Search에서  ) 
+
+   [904]IAN6500TKLH Project에서 LGPL 2.1로 분류함. 확인 부탁합니다. 
+
+   
+
+6. mke2fs 도 5번과 동일함. (  Binary DB Search에서  ) 
+
+ 
+
+system/lib/libext2_blkid.so	external/e2fsprogs/lib/blkid	ok	android-external-e2fsprogs	7.0	GPL-2.0
+libext2_blkid.a	external/e2fsprogs/lib/blkid	ok	android-external-e2fsprogs	7.0	GPL-2.0
+system/lib/libext2_e2p.so	external/e2fsprogs/lib/e2p	ok	android-external-e2fsprogs	7.0	LGPL-2.1
+libext2_e2p.a	external/e2fsprogs/lib/e2p	ok	android-external-e2fsprogs	7.0	LGPL-2.1
+ 
+
+system/lib/libext2_quota.so	external/e2fsprogs/lib/support	ok	android-external-e2fsprogs	7.1	GPL-2.0
+libext2_quota.a	external/e2fsprogs/lib/support	ok	android-external-e2fsprogs	7.1	GPL-2.0
+ 
+
+========================================================================
+
+external/f2fs-tools 폴더 
+
+ 
+
+1. system/bin/fsck.f2fs 와 system/bin/sload_f2fs 
+
+   fsck.f2fs 와 sload_f2fs 의 경우 Makefile을 분석한 결과 
+
+   android/external/f2fs-tools/fsck/dir.c 파일이 GPL 2.0이고 
+
+   NOTICE는 구글 release를 따름 GPL 2.0으로 설정 
+
+ 
+
+ 
+
+2. system/bin/make_f2fs 의 경우 
+
+   external/f2fs-tools/mkfs/f2fs_format_main.c Dual License이지만 ( GPL 2.0 / LGPL 2.1 )
+
+   그냥 통일성을 위해서 GPL 2.0으로 수정 요청( f2fs_format_main.c 과 "lib/libf2fs_io.c"로 구성됨 )  
+
+system/bin/fsck.f2fs	external/f2fs-tools	ok	android-external-f2fs-tools	7.1	GPL-2.0
+system/bin/sload_f2fs	external/f2fs-tools	ok	android-external-f2fs-tools	　	GPL-2.0
+system/bin/make_f2fs	external/f2fs-tools	ok	android-external-f2fs-tools	9.0	GPL-2.0
+ 

@@ -1,0 +1,289 @@
+/*
+ * Mediatek's mt6885 SoC device tree source
+ *
+ * Copyright (C) 2016 MediaTek Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+
+&odm {
+	led@0 {
+		status = "disabled";
+	};
+	led@1 {
+		status = "disabled";
+	};
+	led@2 {
+		status = "disabled";
+	};
+	led@3 {
+		status = "disabled";
+	};
+	led@4 {
+		status = "disabled";
+	};
+	led@5 {
+		status = "disabled";
+	};
+	led@6 {
+		compatible = "mediatek,lcd-backlight";
+		led_mode = <5>;
+		data = <1>;
+		pwm_config = <0 1 0 0 0>;
+	};
+};
+
+&dsi0 {
+	status = "okay";
+	#address-cells = <1>;
+	#size-cells = <0>;
+	panel1@0 {
+		compatible = "tianma,hx83113a,vdo";
+		reg = <0>;
+		reset-gpios = <&pio 42 0>;
+		vio-gpios = <&pio 140 0>;
+		dsv-gpios = <&pio 28 0>;
+		pinctrl-names = "default";
+
+		lge,support-display-scenario;
+
+		lge,tune-dsi-params;
+		lge,tune-dsi-phy-params;
+		lge,tune-brightness;
+		lge,tune-init-command;
+
+		lge,blmap = <
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 					// 15
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50						// 31
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50						// 47
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50						// 63
+			50 50 50 50 50 50 50 51 53 54 56 58 60 62 64 65						// 79
+			67 69 71 73 75 77 79 81 83 85 87 90 92 94 96 98						// 95
+			100 103 105 108 111 114 117 120 123 126 129 132 135 137 140 143		// 111
+			146 148 151 154 157 159 162 165 168 171 175 179 183 187 191 195		// 127
+			199 203 207 211 215 220 223 227 231 235 239 243 247 251 255 259		// 143
+			263 267 271 275 279 283 287 291 295 311 311 311 311 315 320 325		// 159
+			331 336 341 347 352 358 363 368 374 379 385 390 396 401 407 413		// 175
+			418 424 429 435 441 446 452 458 465 472 479 486 493 500 507 514		// 191
+			521 528 535 540 545 551 556 561 567 572 578 583 588 594 599 605		// 207
+			614 623 632 641 650 660 669 678 687 696 705 715 721 728 734 741		// 223
+			747 754 760 767 773 780 786 793 800 807 815 823 830 838 846 853		// 239
+			861 869 876 884 892 900 911 923 935 947 958 970 982 994 1005 1017	// 255
+		>;
+	};
+
+	panel2@0 {
+		compatible = "lgd,sw49107,cmd";
+		reg = <1>;
+		reset-gpios = <&pio 42 0>;
+		vio-gpios = <&pio 140 0>;
+		dsv-gpios = <&pio 28 0>;
+		pinctrl-names = "default";
+
+		lge,support-display-scenario;
+
+		lge,tune-dsi-params;
+		lge,tune-dsi-phy-params;
+		lge,tune-brightness;
+		lge,tune-init-command;
+
+		lge,blmap = <
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 					// 15
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50						// 31
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50						// 47
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50						// 63
+			50 50 50 50 50 50 50 51 53 54 56 58 60 62 64 65						// 79
+			67 69 71 73 75 77 79 81 83 85 87 90 92 94 96 98						// 95
+			100 103 105 108 111 114 117 120 123 126 129 132 135 137 140 143		// 111
+			146 148 151 154 157 159 162 165 168 171 175 179 183 187 191 195		// 127
+			199 203 207 211 215 220 223 227 231 235 239 243 247 251 255 259		// 143
+			263 267 271 275 279 283 287 291 295 311 311 311 311 315 320 325		// 159
+			331 336 341 347 352 358 363 368 374 379 385 390 396 401 407 413		// 175
+			418 424 429 435 441 446 452 458 465 472 479 486 493 500 507 514		// 191
+			521 528 535 540 545 551 556 561 567 572 578 583 588 594 599 605		// 207
+			614 623 632 641 650 660 669 678 687 696 705 715 721 728 734 741		// 223
+			747 754 760 767 773 780 786 793 800 807 815 823 830 838 846 853		// 239
+			861 869 876 884 892 900 911 923 935 947 958 970 982 994 1005 1017	// 255
+		>;
+
+		port {
+			panel_in1: endpoint {
+				remote-endpoint = <&dsi_out>;
+			};
+		};
+	};
+};
+
+&dsi_te {
+	interrupt-parent = <&pio>;
+	interrupts = <41 IRQ_TYPE_EDGE_RISING 41 1>;
+	status = "okay";
+};
+
+&i2c6 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	lm36272@11 {
+		compatible = "mediatek,i2c_lm36272";
+		reg = <0x11>;
+		status = "disabled";
+
+		bl_ovp = <3>; /* 0: 17V, 1: 21V, 2: 25V, 3: 29V */
+		ovp_mode = <0>; /* OVP is report only */
+		pwm_ramp = <0>; /* 0: No PWM ramp, 1: LED current ramps with changes in duty cycle */
+		pwm_enable = <1>; /* 0: PWM Disable, 1: PWM Enable */
+		boost_freq = <1>; /* boot switch frequency 0: 500kHz, 1: 1Mhz */
+		pwm_fsample = <1>; /* PWM sampling frequency 0: 1Mhz, 1: 4Mhz */
+		vpos_disch = <1>; /* 0: No pulldown, 1: pulldown */
+		vneg_disch = <1>; /* 0: No pulldown, 1: pulldown */
+		ext_en = <0>; /* 0: i2c mode, 1: external pin mode */
+		vpos = <5500>;
+		vneg = <5500>;
+
+		lge.blmap-size = <256>;
+		lge.max_brightness = <215>;
+		lge.blmap = <
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 					// 15
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50						// 31
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50						// 47
+			50 50 50 50 50 50 50 50 50 50 50 50 50 50 50 50						// 63
+			50 50 50 50 50 50 50 51 53 54 56 58 60 62 64 65						// 79
+			67 69 71 73 75 77 79 81 83 85 87 90 92 94 96 98						// 95
+			100 103 105 108 111 114 117 120 123 126 129 132 135 137 140 143		// 111
+			146 148 151 154 157 159 162 165 168 171 175 179 183 187 191 195		// 127
+			199 203 207 211 215 220 223 227 231 235 239 243 247 251 255 259		// 143
+			263 267 271 275 279 283 287 291 295 311 311 311 311 315 320 325		// 159
+			331 336 341 347 352 358 363 368 374 379 385 390 396 401 407 413		// 175
+			418 424 429 435 441 446 452 458 465 472 479 486 493 500 507 514		// 191
+			521 528 535 540 545 551 556 561 567 572 578 583 588 594 599 605		// 207
+			614 623 632 641 650 660 669 678 687 696 705 715 721 728 734 741		// 223
+			747 754 760 767 773 780 786 793 800 807 815 823 830 838 846 853		// 239
+			861 869 876 884 892 900 911 923 935 947 958 970 982 994 1005 1017	// 255
+		>;
+	};
+
+	dw8768l@3e {
+		compatible = "mediatek,i2c_dw8768l";
+		reg = <0x3e>;
+		status = "okay";
+		primary {
+			vpos = <5500>;
+			vneg = <5500>;
+			discharge = <3>;
+			knock-on = <0>;
+		};
+	};
+
+	lm3697@36 {
+		compatible = "mediatek,i2c_lm3697";
+		reg = <0x36>;
+		status = "okay";
+
+		hvled1 = <0>;
+		hvled2 = <0>;
+		hvled3 = <0>;
+		mapping_mode = <1>;
+		dither_a = <0>;
+		dither_b = <0>;
+		full_scale_cur = <0x13>;
+		boost_freq = <0>;
+		boost_ovp = <1>;
+		pwm_en_a = <1>;
+		pwm_en_b = <1>;
+		control_a_en = <1>;
+		control_b_en = <0>;
+	};
+};
+
+&odm {
+	gpio_keys {
+		compatible = "gpio-keys";
+		label = "gpio-keys";
+		status = "disabled";
+		pinctrl_names = "default";
+		pinctrl-0 = <&ds3_smartcover_gpio_default &ds3_cover_display_back_gpio_default &luke_gpio_default>;
+		smart_cover {
+			label = "ds3_smart_cover";
+			interrupt-parent = <&pio>;
+			/* IRQF_ONESHOT			0x00002000 */
+			/* IRQF_TRIGGER_FALLING		0x00000002 */
+			/* IRQF_NO_SUSPEND		0x00004000 */
+			interrupts = <7 0x2002 7 0>;
+			irqflags = <0x2002>;
+			gpios = <&pio 7 0x2002>;
+			linux,input-type = <5>;
+			linux,code = <222>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+
+		cover_display_back {
+			label = "ds3_cover_display_back";
+			interrupt-parent = <&pio>;
+			/* IRQF_ONESHOT			0x00002000 */
+			/* IRQF_TRIGGER_FALLING		0x00000002 */
+			/* IRQF_NO_SUSPEND		0x00004000 */
+			interrupts = <8 0x2002 8 0>;
+			irqflags = <0x2002>;
+			gpios = <&pio 8 0x2002>;
+			linux,input-type = <5>;
+			linux,code = <222>;
+			gpio-key,wakeup;
+			debounce-interval = <15>;
+			linux,can-disable;
+		};
+
+		luke {
+			label = "luke";
+			pinctrl_names = "default";
+			pinctrl-0 = <&luke_gpio_default>;
+			interrupt-parent = <&pio>;
+			/* IRQF_ONESHOT			0x00002000 */
+			/* IRQF_TRIGGER_FALLING		0x00000002 */
+			/* IRQF_NO_SUSPEND		0x00004000 */
+			interrupts = <22 0x2002 22 0>;
+			irqflags = <0x2002>;
+			gpios = <&pio 22 0x2002>;
+			linux,input-type = <5>;
+			linux,code = <222>;
+			gpio-key,wakeup;
+			debounce-interval = <200>;
+		};
+	};
+};
+
+&pio {
+	ds3_smartcover_gpio_default: ds3_smartcover_gpio_default {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO7__FUNC_GPIO7>;
+			slew-rate = <0>;
+			bias-pull-up;
+		};
+	};
+
+	ds3_cover_display_back_gpio_default: ds3_cover_display_back_gpio_default {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO8__FUNC_GPIO8>;
+			slew-rate = <0>;
+			bias-pull-up;
+		};
+	};
+
+	luke_gpio_default: luke_gpio_default {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO22__FUNC_GPIO22>;
+			slew-rate = <0>;
+			bias-pull-up;
+		};
+	};
+};
+
+/*End of this file, DO NOT ADD ANYTHING HERE*/

@@ -1,0 +1,199 @@
+/*
+ * Mediatek's mt6885 SoC device tree source
+ *
+ * Copyright (C) 2016 MediaTek Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+/*End of this file, DO NOT ADD ANYTHING HERE*/
+
+/* TOUCH start */
+
+&mt6360_ldo {
+	mt_pmic_vtp_ldo_reg: ldo2 {
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+	};
+};
+
+&touch {
+	status = "disabled";
+};
+
+&i2c0 {
+
+	clock-frequency = <400000>;
+
+	sw49107@29 {
+		compatible = "lge,sw49107";
+		status = "ok";
+
+		reg = <0x29>;
+		interrupt-parent = <&pio>;
+		/* IRQF_ONESHOT			0x00002000 */
+		/* IRQF_TRIGGER_FALLING		0x00000002 */
+		/* IRQF_NO_SUSPEND		0x00004000 */
+		interrupts = <21 0x2002 21 0>;
+		irqflags = <0x2002>;
+		reset-gpio = <&pio 20 0x00>;
+		irq-gpio = <&pio 21 0x2002>;
+		
+		pinctrl-names = "touch_pin_active","touch_pin_sleep";	/*Touch GPIO pin name setting*/
+		pinctrl-0 = <&ctp_ts_int_active &ctp_ts_reset_active>;		/*Touch GPIO pin active setting*/
+		pinctrl-1 = <&ctp_ts_int_suspend &ctp_ts_reset_suspend>;	/*Touch GPIO pin suspend setting*/
+
+		/* Caps */
+		max_x = <1079>;
+		max_y = <2159>;
+		max_pressure = <0xff>;
+		max_width = <15>;
+		max_orientation = <90>;
+		max_id = <10>;
+		hw_reset_delay = <210>;
+		sw_reset_delay = <90>;
+
+		/* Role */
+		use_lpwg = <1>;
+		use_lpwg_test = <1>;
+		hide_coordinate = <0>;
+
+		/* firmware */
+		use_fw_upgrade = <1>;
+		use_firmware = <0>;
+		fw_image = "touch/cayman2/L1W62Cayman2_V1_01.img";
+		panel_spec = "touch/cayman2/cayman2_limit.txt";
+		panel_spec_mfts_folder = "touch/cayman2/cayman2_limit_mfts.txt";
+
+		/* Performance Test */
+		test_jig_size = <6>;
+		use_perf_test = <1>;
+		test_delay = <8>;
+		test_pressure = <50>;
+		test_width = <100>;
+		click_test_x = <135>;
+		click_test_y = <526>;
+		v_drag_test_x = <108>;
+		v_drag_test_start_y = <1388>;
+		v_drag_test_end_y = <771>;
+		h_drag_test_start_x = <848>;
+		h_drag_test_end_x = <231>;
+		h_drag_test_y = <1512>;
+	};
+
+	sw42902@28 {
+		compatible = "lge,sw42902";
+		reg = <0x28>;
+		status = "disabled";
+
+		//vdd-gpio = <&tlmm 68 0x00>;
+		//vcl-gpio = <&tlmm 67 0x00>;
+
+		interrupt-parent = <&pio>;
+		/* IRQF_ONESHOT			0x00002000 */
+		/* IRQF_TRIGGER_FALLING		0x00000002 */
+		/* IRQF_NO_SUSPEND		0x00004000 */
+		interrupts = <21 0x2002 21 0>;
+		irqflags = <0x2002>;
+		reset-gpio = <&pio 20 0x00>;
+		irq-gpio = <&pio 21 0x2002>;
+
+		vcl-gpio = <&pio 135 0x00>; //power
+		vdd-supply = <&mt_pmic_vtp_ldo_reg>; //i2c, temp
+
+		pinctrl-names = "touch_pin_active","touch_pin_sleep";	/*Touch GPIO pin name setting*/
+		pinctrl-0 = <&ctp_ts_int_active &ctp_ts_reset_active>;		/*Touch GPIO pin active setting*/
+		pinctrl-1 = <&ctp_ts_int_suspend &ctp_ts_reset_suspend>;	/*Touch GPIO pin suspend setting*/
+
+		/* caps */
+		max_x = <1080>;
+		max_y = <2460>;
+		max_pressure = <0xff>;
+		max_width_major = <2460>;
+		max_width_minor = <2460>;
+		max_orientation = <90>;
+		max_id = <10>;
+		hw_reset_delay = <90>;
+		sw_reset_delay = <10>;
+
+		/* role */
+		use_lpwg = <1>;
+		use_lpwg_test = <1>;
+		hide_coordinate = <1>;
+		use_activepen_status = <1>;
+		use_film_status = <1>;
+
+		/* firmware */
+		fw_image = "touch/cayman2/B3W68TIME_0_32.img";
+
+		panel_spec = "touch/cayman2/cayman2_oled_limit.txt";
+		panel_spec_mfts_folder = "touch/cayman2/cayman2_oled_limit.txt";
+
+		/* asc */
+		use_asc = <0>;
+		low_delta_thres = <350>;
+		high_delta_thres = <600>;
+		max_delta_cnt = <2>;
+
+		/* Performance Test */
+		use_perf_test = <1>;
+		test_delay = <8>;
+		test_pressure = <50>;
+		test_width = <100>;
+		click_test_x = <180>;
+		click_test_y = <760>;
+		v_drag_test_x = <144>;
+		v_drag_test_start_y = <2003>;
+		v_drag_test_end_y = <1116>;
+		h_drag_test_start_x = <1163>;
+		h_drag_test_end_x = <276>;
+		h_drag_test_y = <2184>;
+	};
+
+	/* Temp Slave Address */
+	active@37 {
+		compatible = "active,pen";
+		status = "disabled";
+		reg = <0x37>;
+	};
+};
+
+&pio {
+	ctp_pins_default: eintdefault {
+	};
+	ctp_ts_int_active: int_active {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO21__FUNC_GPIO21>;
+			slew-rate = <0>;
+			bias-pull-up = <11>;
+		};
+	};
+	ctp_ts_reset_active: reset_active {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO20__FUNC_GPIO20>;
+			slew-rate = <1>;
+			output-high;
+		};
+	};
+	ctp_ts_int_suspend: int_suspend {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO21__FUNC_GPIO21>;
+			slew-rate = <1>;
+			output-low;
+		};
+	};
+	ctp_ts_reset_suspend: reset_suspend {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO20__FUNC_GPIO20>;
+			slew-rate = <1>;
+			output-low;
+		};
+	};
+};
+/* TOUCH end */
