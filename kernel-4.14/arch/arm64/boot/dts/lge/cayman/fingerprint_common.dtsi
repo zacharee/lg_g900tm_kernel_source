@@ -1,0 +1,221 @@
+/*
+ * LG Electronics MT6883 HDK fingerprint device tree source
+ *
+ * Copyright (c) 2018 LG Electronics Co., Ltd.
+ *              http://www.lge.com
+ *
+ */
+
+/* FINGERPRINT start */
+&goodix_fp {
+	status = "disabled";
+};
+
+&odm {
+//	fingerprintid: fingerprintid@0 {
+//		compatible = "mediatek,fp_id";
+//		fp-id-gpios = <&pio 177 0>;
+//	};
+
+	fingerprint:fingerprint {
+		compatible = "mediatek,fingerprint";
+		debounce = <8 0>;
+		interrupt-parent = <&pio>;
+		interrupts = <15 IRQ_TYPE_LEVEL_LOW 15 0>;
+		use_ext_ldo = <1>;
+		pinctrl-names =
+			"fingerprint_default",
+			"fingerprint_irq",
+			"fingerprint_rst_low",
+			"fingerprint_rst_high",
+			"fingerprint_pwr_low",
+			"fingerprint_pwr_high",
+			"miso_spi",
+			"miso_pullhigh",
+			"miso_pulllow",
+			"mosi_spi",
+			"mosi_pullhigh",
+			"mosi_pulllow",
+			"cs_spi",
+			"cs_pullhigh",
+			"cs_pulllow",
+			"clk_spi",
+			"clk_pullhigh",
+			"clk_pulllow"
+			;
+
+		pinctrl-0 = <&fingerprint_pctl_default>;
+		pinctrl-1 = <&fingerprint_pctl_irq>;
+		pinctrl-2 = <&fingerprint_pctl_rst_low>;
+		pinctrl-3 = <&fingerprint_pctl_rst_high>;
+		pinctrl-4 = <&fingerprint_pctl_pwr_low>;
+		pinctrl-5 = <&fingerprint_pctl_pwr_high>;
+		pinctrl-6 = <&fingerprint_miso_spi>;
+		pinctrl-7 = <&fingerprint_miso_pullhigh>;
+		pinctrl-8 = <&fingerprint_miso_pulllow>;
+		pinctrl-9 = <&fingerprint_mosi_spi>;
+		pinctrl-10 = <&fingerprint_mosi_pullhigh>;
+		pinctrl-11 = <&fingerprint_mosi_pulllow>;
+		pinctrl-12 = <&fingerprint_cs_spi>;
+		pinctrl-13 = <&fingerprint_cs_pullhigh>;
+		pinctrl-14 = <&fingerprint_cs_pulllow>;
+		pinctrl-15 = <&fingerprint_clk_spi>;
+		pinctrl-16 = <&fingerprint_clk_pullhigh>;
+		pinctrl-17 = <&fingerprint_clk_pulllow>;
+	};
+};
+
+&spi1 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	fingerprint@0 {
+		status = "okay";
+		compatible = "fingerprint,mediatek";
+		reg = <0>;
+		spi-max-frequency = <8000000>;
+		netlink-event = <30>;
+		vfp-supply = <&mt_pmic_vfp_ldo_reg>;
+		power-type = <1>;
+	};
+};
+
+&pio {
+	fingerprint_pctl_default:fingerprint_default1 {
+
+	};
+
+	fingerprint_pctl_irq:fingerprint_pin_irq {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO15__FUNC_GPIO15>;
+			slew-rate = <0>;
+			bias-pull-down;
+		};
+	};
+
+	fingerprint_pctl_rst_low:fingerprint_pin_rst_low {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO14__FUNC_GPIO14>;
+			slew-rate = <1>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	fingerprint_pctl_rst_high:fingerprint_pin_rst_high {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO14__FUNC_GPIO14>;
+			slew-rate = <1>;
+			bias-disable;
+			output-high;
+		};
+	};
+
+	fingerprint_pctl_pwr_low:fingerprint_pin_pwr_low {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO133__FUNC_GPIO133>;
+			slew-rate = <1>;
+			bias-disable;
+			output-low;
+		};
+	};
+
+	fingerprint_pctl_pwr_high:fingerprint_pin_pwr_high {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO133__FUNC_GPIO133>;
+			slew-rate = <1>;
+			bias-disable;
+			output-high;
+		};
+	};
+
+	fingerprint_miso_spi: state_miso_spi {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO158__FUNC_SPI1_A_MI>;
+			drive-strength = <2>;
+		};
+	};
+
+	fingerprint_miso_pullhigh: state_miso_pullhigh {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO158__FUNC_GPIO158>;
+			slew-rate = <1>;
+			output-high;
+		};
+	};
+
+	fingerprint_miso_pulllow: state_miso_pulllow {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO158__FUNC_GPIO158>;
+			slew-rate = <1>;
+			output-low;
+		};
+	};
+
+	fingerprint_mosi_spi: state_mosi_spi {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO159__FUNC_SPI1_A_MO>;
+			drive-strength = <2>;
+		};
+	};
+
+	fingerprint_mosi_pullhigh: state_mosi_pullhigh {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO159__FUNC_GPIO159>;
+			slew-rate = <1>;
+			output-high;
+		};
+	};
+
+	fingerprint_mosi_pulllow: state_mosi_pulllow {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO159__FUNC_GPIO159>;
+			slew-rate = <1>;
+			output-low;
+		};
+	};
+	fingerprint_cs_spi: state_cs_spi {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO157__FUNC_SPI1_A_CSB>;
+			drive-strength = <2>;
+		};
+	};
+
+	fingerprint_cs_pullhigh: state_cs_pullhigh {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO157__FUNC_GPIO157>;
+			slew-rate = <1>;
+			output-high;
+		};
+	};
+
+	fingerprint_cs_pulllow: state_cs_pulllow {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO157__FUNC_GPIO157>;
+			slew-rate = <1>;
+			output-low;
+		};
+	};
+
+	fingerprint_clk_spi: state_clk_spi {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO156__FUNC_SPI1_A_CLK>;
+			drive-strength = <2>;
+		};
+	};
+	fingerprint_clk_pullhigh: state_clk_pullhigh {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO156__FUNC_GPIO156>;
+			slew-rate = <1>;
+			output-high;
+		};
+	};
+
+	fingerprint_clk_pulllow: state_clk_pulllow {
+		pins_cmd_dat {
+			pinmux = <PINMUX_GPIO156__FUNC_GPIO156>;
+			slew-rate = <1>;
+			output-low;
+		};
+	};
+};
+/* FINGERPRINT end */

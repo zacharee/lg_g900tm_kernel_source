@@ -1,0 +1,81 @@
+/*
+ * Mediatek's mt6885 SoC device tree source
+ *
+ * Copyright (C) 2016 MediaTek Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+&i2c3 {
+	status = "okay";
+	dw7800@59 {
+		compatible = "dongwoon,dw7800";
+		reg = <0x59>;
+		dongwoon,vpwr-on = <0>;
+		status = "okay";
+	};
+};
+
+
+&i2c6 {
+	/*Left*/
+	tfa98xx_top:tfa98xx@34 {
+		compatible = "nxp,tfa98xx";
+		reg = <0x34>;
+		status = "okay";
+		reset-gpio = <&pio 30 0>;
+		irq-gpio = <&pio 57 0>;
+		reset-polarity = <0>;
+		lower-limit-cal = <6050>;
+		upper-limit-cal = <7400>;
+	};
+	/*Right*/
+	tfa98xx_bottom:tfa98xx@35 {
+		compatible = "nxp,tfa98xx";
+		irq-gpio = <&pio 31 0>;
+		reg = <0x35>;
+		status = "okay";
+		lower-limit-cal = <5400>;
+		upper-limit-cal = <6670>;
+	};
+};
+
+&sound {
+	compatible = "mediatek,mt6885-mt6359-sound";
+	mediatek,audio-codec = <&mt6359_snd>;
+	mediatek,platform = <&afe>;
+	mtk_spk_i2s_out = <3>;
+	mtk_spk_i2s_in = <9>;
+
+	ext-codec = <&tfa98xx_top>, <&tfa98xx_bottom>;
+	ext-codec-names = "tfa98xx-codec.6-0034", "tfa98xx-codec.6-0035";
+};
+
+/* feature : $enable $dl_mem $ul_mem $ref_mem */
+&snd_audio_dsp {
+    compatible = "mediatek,snd_audio_dsp";
+    mtk_dsp_voip = <0x7 0x1 0xffffffff 0xffffffff 0x30000>;
+    mtk_dsp_primary = <0x7 0x0 0xffffffff \
+                      0xffffffff 0x30000>;
+    mtk_dsp_offload = <0x0 0x6 0xffffffff \
+                      0xffffffff 0x400000>;
+    mtk_dsp_deep = <0x7 0x3 0xffffffff 0xffffffff 0x30000>;
+    mtk_dsp_playback = <0x1 0x4 0x10 0x14 0x30000>;
+    mtk_dsp_music = <0x1 0xffffffff 0xffffffff 0xffffffff 0x0>;
+    mtk_dsp_capture1 = <0x0 0xffffffff 0xd 0x13 0x20000>;
+    mtk_dsp_a2dp = <0x0 0xffffffff 0xffffffff 0xffffffff 0x40000>;
+    mtk_dsp_dataprovider = <0x1 0xffffffff 0xf 0xffffffff 0x30000>;
+    mtk_dsp_call_final = <0x7 0x0 0x10 0x14 0x18000>;
+    mtk_dsp_fast = <0x7 0x2 0xffffffff 0xffffffff 0x5000>;
+    mtk_dsp_ktv = <0x0 0x8 0x12 0xffffffff 0x10000>;
+    mtk_dsp_capture_raw = <0x0 0xffffffff 0xffffffff 0xffffffff 0x20000>;
+    mtk_dsp_ver = <0x1>;
+    swdsp_smartpa_process_enable = <0x7>;
+    mtk_dsp_mem_afe = <0x1 0x40000>; /* always enable */
+};

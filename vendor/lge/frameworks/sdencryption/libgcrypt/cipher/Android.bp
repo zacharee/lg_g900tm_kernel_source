@@ -1,0 +1,75 @@
+
+cc_defaults {
+    name: "libgcrypt_ciphers",
+    srcs: [
+        "arcfour.c",
+        "blowfish.c",
+        "camellia.c",
+        "camellia-glue.c",
+        "cast5.c",
+        "des.c",
+        "rfc2268.c",
+        "rijndael.c",
+        "seed.c",
+        "serpent.c",
+        "twofish.c",
+    ],
+}
+
+cc_defaults {
+    name: "libgcrypt_pubkey_ciphers",
+    srcs: [
+        "dsa.c",
+        "ecc.c",
+        "elgamal.c",
+        "rsa.c",
+    ],
+}
+
+cc_defaults {
+    name: "libgcrypt_digests",
+    srcs: [
+        "crc.c",
+        "md4.c",
+        "md5.c",
+        "rmd160.c",
+        "sha1.c",
+        "sha256.c",
+        "sha512.c",
+        "tiger.c",
+        "whirlpool.c",
+    ],
+}
+
+cc_defaults {
+    name: "libgcrypt_cipher_defaults",
+    defaults: [
+        "libgcrypt_ciphers",
+        "libgcrypt_pubkey_ciphers",
+        "libgcrypt_digests",
+    ],
+    include_dirs: [
+        "vendor/lge/frameworks/sdencryption/libgcrypt",
+        "vendor/lge/frameworks/sdencryption/libgcrypt/src",
+    ],
+    cflags: [
+        "-Wall",
+        "-DHAVE_CONFIG_H",
+    ],
+    header_libs: ["libgpg-error_headers"],
+}
+
+cc_library_static {
+    name: "libgcrypt-cipher",
+    defaults: ["libgcrypt_cipher_defaults"],
+    srcs: [
+        "ac.c",
+        "cipher.c",
+        "hash-common.c",
+        "hmac-tests.c",
+        "md.c",
+        "primegen.c",
+        "pubkey.c",
+    ],
+}
+

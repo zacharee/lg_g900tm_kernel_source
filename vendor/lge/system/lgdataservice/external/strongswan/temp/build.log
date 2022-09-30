@@ -1,0 +1,468 @@
+Restriction Checker not present, skipping..
+xargs: Unknown option P (see "xargs --help")
+device/qcom/msmnile/msmnile.mk:39: warning: "Compiling with full value-added framework"
+device/lge/alphaplus/BoardConfig.mk:33: warning: TARGET_STORAGE_TYPE: export has been deprecated. It is a global setting. See https://android.googlesource.com/platform/build/+/master/Changes.md#export_keyword.
+============================================
+PLATFORM_VERSION_CODENAME=Q
+PLATFORM_VERSION=10
+TARGET_PRODUCT=alphaplus_lao_com
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=generic
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv7-a-neon
+TARGET_2ND_CPU_VARIANT=cortex-a9
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-4.4.0-121-generic-x86_64-Ubuntu-16.04.1-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=QKQ1.190406.002
+OUT_DIR=out-alphaplus_lao_com
+PRODUCT_SOONG_NAMESPACES=hardware/google/av hardware/google/interfaces
+============================================
+ninja: no work to do.
+ninja: no work to do.
+$(shell TZ="Asia/Seoul" date +%y%j%H%M) was changed, regenerating...
+xargs: Unknown option P (see "xargs --help")
+device/qcom/msmnile/msmnile.mk:39: warning: "Compiling with full value-added framework"
+device/lge/alphaplus/BoardConfig.mk:33: warning: TARGET_STORAGE_TYPE: export has been deprecated. It is a global setting. See https://android.googlesource.com/platform/build/+/master/Changes.md#export_keyword.
+$(shell TZ="Asia/Seoul" date +%y%j%H%M) was changed, regenerating...
+[100% 1/1] initializing build system ...
+xargs: Unknown option P (see "xargs --help")
+device/qcom/msmnile/msmnile.mk:39: warning: "Compiling with full value-added framework"
+device/lge/alphaplus/BoardConfig.mk:33: warning: TARGET_STORAGE_TYPE: export has been deprecated. It is a global setting. See https://android.googlesource.com/platform/build/+/master/Changes.md#export_keyword.
+build/make/core/main.mk:381: warning: "Compile using modified AOSP tree supporting full vendor value-adds"
+[ 66% 2/3] finishing build rules ...
+cat: out-alphaplus_lao_com/products.dot.in: No such file or directory
+vendor/lge/build/tasks/make_laf_img.mk:61: warning: ANDROID_BUILD_TOP has been deprecated. Use '.' instead. See https://android.googlesource.com/platform/build/+/master/Changes.md#ANDROID_BUILD_TOP.
+vendor/lge/build/tasks/make_laf_img.mk:62: warning: ANDROID_BUILD_TOP has been deprecated. Use '.' instead. See https://android.googlesource.com/platform/build/+/master/Changes.md#ANDROID_BUILD_TOP.
+vendor/lge/build/tasks/make_laf_img.mk:63: warning: ANDROID_BUILD_TOP has been deprecated. Use '.' instead. See https://android.googlesource.com/platform/build/+/master/Changes.md#ANDROID_BUILD_TOP.
+No private laf resources for TARGET_DEVICE alphaplus
+[100% 3/3] writing build rules ...
+build/make/core/Makefile:28: warning: overriding commands for target `out-alphaplus_lao_com/target/product/alphaplus/system/bin/iperf'
+build/make/core/base_rules.mk:499: warning: ignoring old commands for target `out-alphaplus_lao_com/target/product/alphaplus/system/bin/iperf'
+build/make/core/Makefile:28: warning: overriding commands for target `out-alphaplus_lao_com/target/product/alphaplus/vendor/bin/dumpsys'
+build/make/core/base_rules.mk:499: warning: ignoring old commands for target `out-alphaplus_lao_com/target/product/alphaplus/vendor/bin/dumpsys'
+vendor/lge/build/tasks/generate_privapp_whitelist.mk:16: warning: real file "out-alphaplus_lao_com/target/product/alphaplus/system/etc/permissions/privapp-permissions-lge-alphaplus-laop.xml" depends on PHONY target "aapt"
+vendor/lge/build/tasks/generate_privapp_whitelist.mk:24: warning: real file "out-alphaplus_lao_com/target/product/alphaplus/product/etc/permissions/privapp-permissions-lge-alphaplus-laop.xml" depends on PHONY target "aapt"
+vendor/qcom/build/tasks/QSSI_violators.mk:5: warning: writing to readonly directory: "qssi_violators"
+out-alphaplus_lao_com/target/product/alphaplus/obj/CONFIG/kati_packaging/dist.mk was modified, regenerating...
+[ 66% 4/6] initializing packaging system ...
+[ 83% 5/6] including distdir.mk ...
+[100% 6/6] writing packaging rules ...
+Starting ninja...
+[ 13% 7/52] target  C: libstrongswan <= vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c
+FAILED: out-alphaplus_lao_com/target/product/alphaplus/obj/SHARED_LIBRARIES/libstrongswan_intermediates/plugins/openssl/openssl_rsa_private_key.o
+/bin/bash -c "PWD=/proc/self/cwd vendor/qcom/proprietary/llvm-arm-toolchain-ship/8.0/bin/clang 	-I external/curl/include -I external/boringssl/include -I vendor/lge/system/dsqn/libpatchcodeid/ -I vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan -I out-alphaplus_lao_com/target/product/alphaplus/obj/SHARED_LIBRARIES/libstrongswan_intermediates -I out-alphaplus_lao_com/target/product/alphaplus/gen/SHARED_LIBRARIES/libstrongswan_intermediates -I libnativehelper/include_jni \$(cat out-alphaplus_lao_com/target/product/alphaplus/obj/SHARED_LIBRARIES/libstrongswan_intermediates/import_includes)  -I system/core/include -I system/media/audio/include -I hardware/libhardware/include -I hardware/libhardware_legacy/include -I hardware/ril/include -I frameworks/native/include -I frameworks/native/opengl/include -I frameworks/av/include -isystem bionic/libc/include -isystem bionic/libc/kernel/uapi -isystem bionic/libc/kernel/uapi/asm-arm64 -isystem bionic/libc/kernel/android/scsi -isystem bionic/libc/kernel/android/uapi -c  -Werror=implicit-function-declaration -DANDROID -fmessage-length=0 -W -Wall -Wno-unused -Winit-self -Wpointer-arith -no-canonical-prefixes -DNDEBUG -UDEBUG -fno-exceptions -Wno-multichar -O2 -g -fno-strict-aliasing -fdebug-prefix-map=/proc/self/cwd= -D__compiler_offsetof=__builtin_offsetof -faddrsig -Wimplicit-fallthrough -Werror=int-conversion -Wno-reserved-id-macro -Wno-format-pedantic -Wno-unused-command-line-argument -fcolor-diagnostics -Wno-zero-as-null-pointer-constant -Wno-sign-compare -Wno-defaulted-function-deleted -Wno-inconsistent-missing-override -ffunction-sections -fdata-sections -fno-short-enums -funwind-tables -fstack-protector-strong -Wa,--noexecstack -D_FORTIFY_SOURCE=2 -Wstrict-aliasing=2 -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point -Werror=date-time -Werror=format-security -nostdlibinc -march=armv8-a  -target aarch64-linux-android -Bprebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/aarch64-linux-android/bin   -std=gnu99    -Wall -Wno-format -Wno-pointer-sign -Wno-pointer-arith -Wno-sign-compare -Wno-strict-aliasing -DHAVE___BOOL -DHAVE_STDBOOL_H -DHAVE_ALLOCA_H -DHAVE_ALLOCA -DHAVE_CLOCK_GETTIME -DHAVE_DLADDR -DHAVE_PRCTL -DHAVE_LINUX_UDP_H -DHAVE_STRUCT_SADB_X_POLICY_SADB_X_POLICY_PRIORITY -DHAVE_IPSEC_MODE_BEET -DHAVE_IPSEC_DIR_FWD -DHAVE_IN6_PKTINFO -DOPENSSL_NO_EC -DOPENSSL_NO_ECDSA -DOPENSSL_NO_ECDH -DOPENSSL_NO_ENGINE -DCONFIG_H_INCLUDED -DCAPABILITIES -DCAPABILITIES_NATIVE -DMONOLITHIC -DUSE_IKEV1 -DUSE_IKEV2 -DUSE_BUILTIN_PRINTF -DDEBUG -DROUTING_TABLE=0 -DROUTING_TABLE_PRIO=220 -DVERSION=\\\"\"5.7.1\"\\\" -DPLUGINDIR=\\\"\"/ipsec\"\\\" -DIPSEC_DIR=\\\"\"/system/bin\"\\\" -DIPSEC_PIDDIR=\\\"\"/data/misc/vpn\"\\\" -DIPSEC_CONFDIR=\\\"\"/system/etc/ipsec\"\\\" -DSTRONGSWAN_CONF=\\\"\"\"/system/etc/ipsec\"/strongswan.conf\"\\\" -DDEV_RANDOM=\\\"/dev/random\\\" -DDEV_URANDOM=\\\"/dev/urandom\\\" -DIPSEC_SCRIPT=\\\"\"/system/etc/ipsec_script\"\\\" -DRESOLV_CONF=\\\"\"/system/etc/ipsec\"/resolv.conf\\\" -DHAVE_IN6ADDR_ANY -fPIC -D_USING_LIBCXX -DANDROID_STRICT   -Werror=int-to-pointer-cast -Werror=pointer-to-int-cast -Werror=address-of-temporary -Werror=return-type -Wno-tautological-constant-compare -Wno-tautological-type-limit-compare -Wno-tautological-unsigned-enum-zero-compare -Wno-tautological-unsigned-zero-compare -Wno-c++98-compat-extra-semi -Wno-return-std-move-in-c++11   -MD -MF out-alphaplus_lao_com/target/product/alphaplus/obj/SHARED_LIBRARIES/libstrongswan_intermediates/plugins/openssl/openssl_rsa_private_key.d -o out-alphaplus_lao_com/target/product/alphaplus/obj/SHARED_LIBRARIES/libstrongswan_intermediates/plugins/openssl/openssl_rsa_private_key.o vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c"
+In file included from vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:17:
+external/boringssl/include/openssl/opensslconf.h:39:9: warning: 'OPENSSL_NO_ENGINE' macro redefined [-Wmacro-redefined]
+#define OPENSSL_NO_ENGINE
+        ^
+<command line>:25:9: note: previous definition is here
+#define OPENSSL_NO_ENGINE 1
+        ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:39:1: error: static declaration of 'RSA_get0_key' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, key, n, e, d)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:166:1: note: expanded from here
+OPENSSL_KEY_FALLBACK5
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:172:20: note: expanded from macro 'OPENSSL_KEY_FALLBACK5'
+static inline void type##_get0_##name(const type *o, const BIGNUM **k1, const BIGNUM **k2, const BIGNUM **k3) { \
+                   ^
+<scratch space>:168:1: note: expanded from here
+RSA_get0_key
+^
+external/boringssl/include/openssl/rsa.h:105:21: note: previous declaration is here
+OPENSSL_EXPORT void RSA_get0_key(const RSA *rsa, const BIGNUM **out_n,
+                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:39:1: error: static declaration of 'RSA_set0_key' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, key, n, e, d)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:166:1: note: expanded from here
+OPENSSL_KEY_FALLBACK5
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:177:19: note: expanded from macro 'OPENSSL_KEY_FALLBACK5'
+static inline int type##_set0_##name(type *o, BIGNUM *k1, BIGNUM *k2, BIGNUM *k3) { \
+                  ^
+<scratch space>:170:1: note: expanded from here
+RSA_set0_key
+^
+external/boringssl/include/openssl/rsa.h:130:20: note: previous declaration is here
+OPENSSL_EXPORT int RSA_set0_key(RSA *rsa, BIGNUM *n, BIGNUM *e, BIGNUM *d);
+                   ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:40:1: error: static declaration of 'RSA_get0_factors' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, factors, p, q)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:171:1: note: expanded from here
+OPENSSL_KEY_FALLBACK4
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:162:20: note: expanded from macro 'OPENSSL_KEY_FALLBACK4'
+static inline void type##_get0_##name(const type *o, const BIGNUM **k1, const BIGNUM **k2) { \
+                   ^
+<scratch space>:173:1: note: expanded from here
+RSA_get0_factors
+^
+external/boringssl/include/openssl/rsa.h:110:21: note: previous declaration is here
+OPENSSL_EXPORT void RSA_get0_factors(const RSA *rsa, const BIGNUM **out_p,
+                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:40:1: error: static declaration of 'RSA_set0_factors' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, factors, p, q)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:171:1: note: expanded from here
+OPENSSL_KEY_FALLBACK4
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:166:19: note: expanded from macro 'OPENSSL_KEY_FALLBACK4'
+static inline int type##_set0_##name(type *o, BIGNUM *k1, BIGNUM *k2) { \
+                  ^
+<scratch space>:175:1: note: expanded from here
+RSA_set0_factors
+^
+external/boringssl/include/openssl/rsa.h:140:20: note: previous declaration is here
+OPENSSL_EXPORT int RSA_set0_factors(RSA *rsa, BIGNUM *p, BIGNUM *q);
+                   ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:41:1: error: static declaration of 'RSA_get0_crt_params' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, crt_params, dmp1, dmq1, iqmp)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:176:1: note: expanded from here
+OPENSSL_KEY_FALLBACK5
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:172:20: note: expanded from macro 'OPENSSL_KEY_FALLBACK5'
+static inline void type##_get0_##name(const type *o, const BIGNUM **k1, const BIGNUM **k2, const BIGNUM **k3) { \
+                   ^
+<scratch space>:178:1: note: expanded from here
+RSA_get0_crt_params
+^
+external/boringssl/include/openssl/rsa.h:117:21: note: previous declaration is here
+OPENSSL_EXPORT void RSA_get0_crt_params(const RSA *rsa, const BIGNUM **out_dmp1,
+                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:41:1: error: static declaration of 'RSA_set0_crt_params' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, crt_params, dmp1, dmq1, iqmp)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:176:1: note: expanded from here
+OPENSSL_KEY_FALLBACK5
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:177:19: note: expanded from macro 'OPENSSL_KEY_FALLBACK5'
+static inline int type##_set0_##name(type *o, BIGNUM *k1, BIGNUM *k2, BIGNUM *k3) { \
+                  ^
+<scratch space>:180:1: note: expanded from here
+RSA_set0_crt_params
+^
+external/boringssl/include/openssl/rsa.h:150:20: note: previous declaration is here
+OPENSSL_EXPORT int RSA_set0_crt_params(RSA *rsa, BIGNUM *dmp1, BIGNUM *dmq1,
+                   ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:269:37: warning: unused parameter 'this' [-Wunused-parameter]
+        private_openssl_rsa_private_key_t *this)
+                                           ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:458:67: warning: unused parameter 'type' [-Wunused-parameter]
+openssl_rsa_private_key_t *openssl_rsa_private_key_gen(key_type_t type,
+                                                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:723:68: warning: unused parameter 'type' [-Wunused-parameter]
+openssl_rsa_private_key_t *openssl_rsa_private_key_load(key_type_t type,
+                                                                   ^
+4 warnings and 6 errors generated.
+[ 15% 8/52] target arm C: libstrongswan_32 <= vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c
+FAILED: out-alphaplus_lao_com/target/product/alphaplus/obj_arm/SHARED_LIBRARIES/libstrongswan_intermediates/plugins/openssl/openssl_rsa_private_key.o
+/bin/bash -c "PWD=/proc/self/cwd vendor/qcom/proprietary/llvm-arm-toolchain-ship/8.0/bin/clang 	-I external/curl/include -I external/boringssl/include -I vendor/lge/system/dsqn/libpatchcodeid/ -I vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan -I out-alphaplus_lao_com/target/product/alphaplus/obj_arm/SHARED_LIBRARIES/libstrongswan_intermediates -I out-alphaplus_lao_com/target/product/alphaplus/gen/SHARED_LIBRARIES/libstrongswan_intermediates -I libnativehelper/include_jni \$(cat out-alphaplus_lao_com/target/product/alphaplus/obj_arm/SHARED_LIBRARIES/libstrongswan_intermediates/import_includes)  -I system/core/include -I system/media/audio/include -I hardware/libhardware/include -I hardware/libhardware_legacy/include -I hardware/ril/include -I frameworks/native/include -I frameworks/native/opengl/include -I frameworks/av/include -isystem bionic/libc/include -isystem bionic/libc/kernel/uapi -isystem bionic/libc/kernel/uapi/asm-arm -isystem bionic/libc/kernel/android/scsi -isystem bionic/libc/kernel/android/uapi -c  -fomit-frame-pointer -DANDROID -fmessage-length=0 -W -Wall -Wno-unused -Winit-self -Wpointer-arith -no-canonical-prefixes -DNDEBUG -UDEBUG -fno-exceptions -Wno-multichar -O2 -g -fno-strict-aliasing -fdebug-prefix-map=/proc/self/cwd= -D__compiler_offsetof=__builtin_offsetof -faddrsig -Wimplicit-fallthrough -Werror=int-conversion -Wno-reserved-id-macro -Wno-format-pedantic -Wno-unused-command-line-argument -fcolor-diagnostics -Wno-zero-as-null-pointer-constant -Wno-sign-compare -Wno-defaulted-function-deleted -Wno-inconsistent-missing-override -ffunction-sections -fdata-sections -fno-short-enums -funwind-tables -fstack-protector-strong -Wa,--noexecstack -D_FORTIFY_SOURCE=2 -Wstrict-aliasing=2 -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point -Werror=date-time -Werror=format-security -nostdlibinc -msoft-float -march=armv7-a -mfloat-abi=softfp -mfpu=neon  -target armv7a-linux-androideabi -Bprebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/arm-linux-androideabi/bin   -std=gnu99 -fstrict-aliasing   -Wall -Wno-format -Wno-pointer-sign -Wno-pointer-arith -Wno-sign-compare -Wno-strict-aliasing -DHAVE___BOOL -DHAVE_STDBOOL_H -DHAVE_ALLOCA_H -DHAVE_ALLOCA -DHAVE_CLOCK_GETTIME -DHAVE_DLADDR -DHAVE_PRCTL -DHAVE_LINUX_UDP_H -DHAVE_STRUCT_SADB_X_POLICY_SADB_X_POLICY_PRIORITY -DHAVE_IPSEC_MODE_BEET -DHAVE_IPSEC_DIR_FWD -DHAVE_IN6_PKTINFO -DOPENSSL_NO_EC -DOPENSSL_NO_ECDSA -DOPENSSL_NO_ECDH -DOPENSSL_NO_ENGINE -DCONFIG_H_INCLUDED -DCAPABILITIES -DCAPABILITIES_NATIVE -DMONOLITHIC -DUSE_IKEV1 -DUSE_IKEV2 -DUSE_BUILTIN_PRINTF -DDEBUG -DROUTING_TABLE=0 -DROUTING_TABLE_PRIO=220 -DVERSION=\\\"\"5.7.1\"\\\" -DPLUGINDIR=\\\"\"/ipsec\"\\\" -DIPSEC_DIR=\\\"\"/system/bin\"\\\" -DIPSEC_PIDDIR=\\\"\"/data/misc/vpn\"\\\" -DIPSEC_CONFDIR=\\\"\"/system/etc/ipsec\"\\\" -DSTRONGSWAN_CONF=\\\"\"\"/system/etc/ipsec\"/strongswan.conf\"\\\" -DDEV_RANDOM=\\\"/dev/random\\\" -DDEV_URANDOM=\\\"/dev/urandom\\\" -DIPSEC_SCRIPT=\\\"\"/system/etc/ipsec_script\"\\\" -DRESOLV_CONF=\\\"\"/system/etc/ipsec\"/resolv.conf\\\" -DHAVE_IN6ADDR_ANY -fPIC -D_USING_LIBCXX -DANDROID_STRICT   -Werror=int-to-pointer-cast -Werror=pointer-to-int-cast -Werror=address-of-temporary -Werror=return-type -Wno-tautological-constant-compare -Wno-tautological-type-limit-compare -Wno-tautological-unsigned-enum-zero-compare -Wno-tautological-unsigned-zero-compare -Wno-c++98-compat-extra-semi -Wno-return-std-move-in-c++11   -MD -MF out-alphaplus_lao_com/target/product/alphaplus/obj_arm/SHARED_LIBRARIES/libstrongswan_intermediates/plugins/openssl/openssl_rsa_private_key.d -o out-alphaplus_lao_com/target/product/alphaplus/obj_arm/SHARED_LIBRARIES/libstrongswan_intermediates/plugins/openssl/openssl_rsa_private_key.o vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c"
+In file included from vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:17:
+external/boringssl/include/openssl/opensslconf.h:39:9: warning: 'OPENSSL_NO_ENGINE' macro redefined [-Wmacro-redefined]
+#define OPENSSL_NO_ENGINE
+        ^
+<command line>:25:9: note: previous definition is here
+#define OPENSSL_NO_ENGINE 1
+        ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:39:1: error: static declaration of 'RSA_get0_key' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, key, n, e, d)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:166:1: note: expanded from here
+OPENSSL_KEY_FALLBACK5
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:172:20: note: expanded from macro 'OPENSSL_KEY_FALLBACK5'
+static inline void type##_get0_##name(const type *o, const BIGNUM **k1, const BIGNUM **k2, const BIGNUM **k3) { \
+                   ^
+<scratch space>:168:1: note: expanded from here
+RSA_get0_key
+^
+external/boringssl/include/openssl/rsa.h:105:21: note: previous declaration is here
+OPENSSL_EXPORT void RSA_get0_key(const RSA *rsa, const BIGNUM **out_n,
+                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:39:1: error: static declaration of 'RSA_set0_key' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, key, n, e, d)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:166:1: note: expanded from here
+OPENSSL_KEY_FALLBACK5
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:177:19: note: expanded from macro 'OPENSSL_KEY_FALLBACK5'
+static inline int type##_set0_##name(type *o, BIGNUM *k1, BIGNUM *k2, BIGNUM *k3) { \
+                  ^
+<scratch space>:170:1: note: expanded from here
+RSA_set0_key
+^
+external/boringssl/include/openssl/rsa.h:130:20: note: previous declaration is here
+OPENSSL_EXPORT int RSA_set0_key(RSA *rsa, BIGNUM *n, BIGNUM *e, BIGNUM *d);
+                   ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:40:1: error: static declaration of 'RSA_get0_factors' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, factors, p, q)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:171:1: note: expanded from here
+OPENSSL_KEY_FALLBACK4
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:162:20: note: expanded from macro 'OPENSSL_KEY_FALLBACK4'
+static inline void type##_get0_##name(const type *o, const BIGNUM **k1, const BIGNUM **k2) { \
+                   ^
+<scratch space>:173:1: note: expanded from here
+RSA_get0_factors
+^
+external/boringssl/include/openssl/rsa.h:110:21: note: previous declaration is here
+OPENSSL_EXPORT void RSA_get0_factors(const RSA *rsa, const BIGNUM **out_p,
+                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:40:1: error: static declaration of 'RSA_set0_factors' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, factors, p, q)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:171:1: note: expanded from here
+OPENSSL_KEY_FALLBACK4
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:166:19: note: expanded from macro 'OPENSSL_KEY_FALLBACK4'
+static inline int type##_set0_##name(type *o, BIGNUM *k1, BIGNUM *k2) { \
+                  ^
+<scratch space>:175:1: note: expanded from here
+RSA_set0_factors
+^
+external/boringssl/include/openssl/rsa.h:140:20: note: previous declaration is here
+OPENSSL_EXPORT int RSA_set0_factors(RSA *rsa, BIGNUM *p, BIGNUM *q);
+                   ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:41:1: error: static declaration of 'RSA_get0_crt_params' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, crt_params, dmp1, dmq1, iqmp)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:176:1: note: expanded from here
+OPENSSL_KEY_FALLBACK5
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:172:20: note: expanded from macro 'OPENSSL_KEY_FALLBACK5'
+static inline void type##_get0_##name(const type *o, const BIGNUM **k1, const BIGNUM **k2, const BIGNUM **k3) { \
+                   ^
+<scratch space>:178:1: note: expanded from here
+RSA_get0_crt_params
+^
+external/boringssl/include/openssl/rsa.h:117:21: note: previous declaration is here
+OPENSSL_EXPORT void RSA_get0_crt_params(const RSA *rsa, const BIGNUM **out_dmp1,
+                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:41:1: error: static declaration of 'RSA_set0_crt_params' follows non-static declaration
+OPENSSL_KEY_FALLBACK(RSA, crt_params, dmp1, dmq1, iqmp)
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:149:35: note: expanded from macro 'OPENSSL_KEY_FALLBACK'
+#define OPENSSL_KEY_FALLBACK(...) VA_ARGS_DISPATCH(OPENSSL_KEY_FALLBACK, __VA_ARGS__)(__VA_ARGS__)
+                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:141:37: note: expanded from macro 'VA_ARGS_DISPATCH'
+#define VA_ARGS_DISPATCH(func, ...) _VA_ARGS_DISPATCH(func, VA_ARGS_NUM(__VA_ARGS__))
+                                    ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/utils/utils.h:142:38: note: expanded from macro '_VA_ARGS_DISPATCH'
+#define _VA_ARGS_DISPATCH(func, num) __VA_ARGS_DISPATCH(func, num)
+                                     ^
+note: (skipping 1 expansions in backtrace; use -fmacro-backtrace-limit=0 to see all)
+<scratch space>:176:1: note: expanded from here
+OPENSSL_KEY_FALLBACK5
+^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_util.h:177:19: note: expanded from macro 'OPENSSL_KEY_FALLBACK5'
+static inline int type##_set0_##name(type *o, BIGNUM *k1, BIGNUM *k2, BIGNUM *k3) { \
+                  ^
+<scratch space>:180:1: note: expanded from here
+RSA_set0_crt_params
+^
+external/boringssl/include/openssl/rsa.h:150:20: note: previous declaration is here
+OPENSSL_EXPORT int RSA_set0_crt_params(RSA *rsa, BIGNUM *dmp1, BIGNUM *dmq1,
+                   ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:269:37: warning: unused parameter 'this' [-Wunused-parameter]
+        private_openssl_rsa_private_key_t *this)
+                                           ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:458:67: warning: unused parameter 'type' [-Wunused-parameter]
+openssl_rsa_private_key_t *openssl_rsa_private_key_gen(key_type_t type,
+                                                                  ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_rsa_private_key.c:723:68: warning: unused parameter 'type' [-Wunused-parameter]
+openssl_rsa_private_key_t *openssl_rsa_private_key_load(key_type_t type,
+                                                                   ^
+4 warnings and 6 errors generated.
+[ 17% 9/52] target  C: libstrongswan <= vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c
+In file included from vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:47:
+In file included from external/boringssl/include/openssl/x509.h:66:
+In file included from external/boringssl/include/openssl/base.h:76:
+external/boringssl/include/openssl/opensslconf.h:39:9: warning: 'OPENSSL_NO_ENGINE' macro redefined [-Wmacro-redefined]
+#define OPENSSL_NO_ENGINE
+        ^
+<command line>:25:9: note: previous definition is here
+#define OPENSSL_NO_ENGINE 1
+        ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:316:26: warning: unused parameter 'this' [-Wunused-parameter]
+        private_openssl_x509_t *this)
+                                ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:429:22: warning: passing 'ASN1_BIT_STRING **' (aka 'struct asn1_string_st **') to parameter of type 'const ASN1_BIT_STRING **' (aka 'const struct asn1_string_st **') discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+        X509_get0_signature(&sig, NULL, this->x509);
+                            ^~~~
+external/boringssl/include/openssl/x509.h:771:65: note: passing argument to parameter 'psig' here
+OPENSSL_EXPORT void X509_get0_signature(const ASN1_BIT_STRING **psig,
+                                                                ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:1137:28: warning: passing 'X509_ALGOR **' (aka 'struct X509_algor_st **') to parameter of type 'const X509_ALGOR **' (aka 'const struct X509_algor_st **') discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+        X509_get0_signature(NULL, &alg, this->x509);
+                                  ^~~~
+external/boringssl/include/openssl/x509.h:772:60: note: passing argument to parameter 'palg' here
+                                        const X509_ALGOR **palg, const X509 *x);
+                                                           ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:1139:6: warning: assigning to 'X509_ALGOR *' (aka 'struct X509_algor_st *') from 'const X509_ALGOR *' (aka 'const struct X509_algor_st *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        alg = X509_get0_tbs_sigalg(this->x509);
+            ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:1178:54: warning: unused parameter 'type' [-Wunused-parameter]
+openssl_x509_t *openssl_x509_load(certificate_type_t type, va_list args)
+                                                     ^
+6 warnings generated.
+[ 19% 10/52] target arm C: libstrongswan_32 <= vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c
+In file included from vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:47:
+In file included from external/boringssl/include/openssl/x509.h:66:
+In file included from external/boringssl/include/openssl/base.h:76:
+external/boringssl/include/openssl/opensslconf.h:39:9: warning: 'OPENSSL_NO_ENGINE' macro redefined [-Wmacro-redefined]
+#define OPENSSL_NO_ENGINE
+        ^
+<command line>:25:9: note: previous definition is here
+#define OPENSSL_NO_ENGINE 1
+        ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:316:26: warning: unused parameter 'this' [-Wunused-parameter]
+        private_openssl_x509_t *this)
+                                ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:429:22: warning: passing 'ASN1_BIT_STRING **' (aka 'struct asn1_string_st **') to parameter of type 'const ASN1_BIT_STRING **' (aka 'const struct asn1_string_st **') discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+        X509_get0_signature(&sig, NULL, this->x509);
+                            ^~~~
+external/boringssl/include/openssl/x509.h:771:65: note: passing argument to parameter 'psig' here
+OPENSSL_EXPORT void X509_get0_signature(const ASN1_BIT_STRING **psig,
+                                                                ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:1137:28: warning: passing 'X509_ALGOR **' (aka 'struct X509_algor_st **') to parameter of type 'const X509_ALGOR **' (aka 'const struct X509_algor_st **') discards qualifiers in nested pointer types [-Wincompatible-pointer-types-discards-qualifiers]
+        X509_get0_signature(NULL, &alg, this->x509);
+                                  ^~~~
+external/boringssl/include/openssl/x509.h:772:60: note: passing argument to parameter 'palg' here
+                                        const X509_ALGOR **palg, const X509 *x);
+                                                           ^
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:1139:6: warning: assigning to 'X509_ALGOR *' (aka 'struct X509_algor_st *') from 'const X509_ALGOR *' (aka 'const struct X509_algor_st *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+        alg = X509_get0_tbs_sigalg(this->x509);
+            ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+vendor/lge/external/strongswan/ver5.7.1/src/libstrongswan/plugins/openssl/openssl_x509.c:1178:54: warning: unused parameter 'type' [-Wunused-parameter]
+openssl_x509_t *openssl_x509_load(certificate_type_t type, va_list args)
+                                                     ^
+6 warnings generated.
+ninja: build stopped: subcommand failed.
+16:35:39 ninja failed with: exit status 1
+
+[0;31m#### failed to build some targets (01:38 (mm:ss)) ####[00m
+

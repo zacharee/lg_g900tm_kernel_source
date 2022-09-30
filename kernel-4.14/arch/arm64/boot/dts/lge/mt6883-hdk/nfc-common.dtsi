@@ -1,0 +1,23 @@
+/*
+ * LG Electronics MT6765 HDK camera device tree source
+ *
+ * Copyright (c) 2018 LG Electronics Co., Ltd.
+ *              http://www.lge.com
+ *
+ */
+
+&i2c6 {
+	pn547@28 {
+		compatible = "nxp,pn547";
+		reg = <0x28>;
+		status = "ok";
+
+		nxp,gpio_ven = <&pio 10 0x00>;
+		nxp,gpio_mode = <&pio 17 0x00>;
+		nxp,gpio_irq = <&pio 11 0x01>;
+
+		interrupt-parent = <&pio>;
+		interrupts = <11 0x4001 1 0>;
+		debounce = <2 0>;
+	};
+};

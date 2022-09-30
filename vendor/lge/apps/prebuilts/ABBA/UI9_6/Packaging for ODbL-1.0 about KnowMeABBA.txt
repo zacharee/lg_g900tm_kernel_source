@@ -1,0 +1,13 @@
+
+бс OSS Notice ( to obtain the open data ) 
+
+ If you want to obtain the open data ( source ) for "KnowMeABBA.apk" application, 
+ the open data may be obtained at http://opensource.lge.com. 
+ LGE will also provide open data ( code ) to you . 
+ 
+ You can search the keyword with "KnowMeABBA" at the search window in http://opensource.lge.com.  
+
+ You can find it in "Software List" at that website. 
+
+
+ 

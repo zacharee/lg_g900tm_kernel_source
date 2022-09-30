@@ -1,0 +1,684 @@
+/*
+ * Mediatek's mt6885 SoC device tree source
+ *
+ * Copyright (C) 2016 MediaTek Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See http://www.gnu.org/licenses/gpl-2.0.html for more details.
+ */
+
+&mt6360_pmu {
+	chg {
+		cv = <4430000>;		/* uA */
+	};
+};
+
+&i2c3 {
+	p9222@61 {
+		compatible = "idt,p9222";
+		reg = <0x61>;
+		status = "okay";
+
+		vrect-gpio = <&pio 102 0>;
+		pdetb-gpio = <&pio 183 0>;
+		irq-gpio = <&pio 152 0>;
+		en-gpio = <&pio 98 0>;
+
+		vout-set-step = <1000000>;
+		boot-tx-epp-rst-soc = <1>;
+
+		epp-settings = "epp-13w", "epp-10w";
+		bpp {
+			fod = [
+				A5 28
+				88 2E
+				98 19
+				A0 02
+				A0 02
+				A8 E8
+				14 00
+				00 00
+			];
+		};
+		epp-13w {
+			power = <13000000>;
+			vout = <12000000>;
+			vrect = <12500000>;
+			fod = [
+				A5 3B
+				88 44
+				86 46
+				96 19
+				97 05
+				97 05
+				14 00
+				A0 55
+			];
+		};
+		epp-10w {
+			power = <10000000>;
+			vout = <9000000>;
+			vrect = <9500000>;
+			fod = [
+				A5 3B
+				88 44
+				86 46
+				96 19
+				97 05
+				97 05
+				14 00
+				A0 55
+			];
+		};
+	};
+};
+
+&i2c3 {
+	bq25970@66 {
+		compatible = "ti,bq25970";
+		status = "okay";
+		reg = <0x66>;
+		irq-gpio = <&pio 58 0x0>;
+		ac_ovp = <17000000>;		/* 17 V */
+		bat_ucp_alm = <2000000>;	/* 2 A */
+		fsw_set = <500000>;		/* 500 kHz */
+		watchdog = <30000000>;		/* 30 sec */
+		ss_timeout = <0>;		/* disable */
+		ibat_sns_res = <5>;		/* 5 ohm */
+		ibus_low_dg_set = <5000>;	/* 5 ms */
+		bat_ocp_alm_dis;
+		bat_ucp_alm_dis;
+		bus_ocp_dis;
+		bus_ocp_alm_dis;
+		tsbus_dis;
+		tsbat_dis;
+		tsbus_adc_dis;
+		tsbat_adc_dis;
+		tsbus_tsbat_alm_mask;
+		tsbat_flt_mask;
+		tsbus_flt_mask;
+	};
+};
+
+&mtk_pe50 {
+	vbat_cv = <4430>;
+	ita_level = <2000 1900 1800 1700>;
+	rcable_level = <375 394 416 441>;
+	dvchg_convert_ratio_init = <215>;
+};
+
+&charger {
+	algorithm_name = "LGECharging";
+	enable_pe_2;
+	enable_pe_4;
+	enable_pe_5;
+
+	/* common */
+	battery_cv = <4430000>;
+	min_charger_voltage = <4400000>;
+	max_charger_voltage = <14000000>;
+
+	/* dynamic mivr */
+	min_charger_voltage_1 = <4400000>;
+	min_charger_voltage_2 = <4400000>;
+
+	/* charging current */
+	usb_charger_current_suspend = <0>;
+	usb_charger_current_unconfigured = <100000>;
+	usb_charger_current_configured = <500000>;
+	usb_charger_current = <500000>;
+	ac_charger_current = <2000000>;
+	ac_charger_input_current = <2000000>;
+	non_std_ac_charger_current = <500000>;
+	charging_host_charger_current = <1500000>;
+	apple_1_0a_charger_current = <1000000>;
+	apple_2_1a_charger_current = <2100000>;
+	ta_ac_charger_current = <2700000>;
+	ta_ac_charger_input_current = <1800000>;
+	pd_charger_current = <2700000>;
+
+	/* PE 2.0 */
+	pe20_ichg_level_threshold = <500000>; /* uA */
+	ta_start_battery_soc = <0>;
+	ta_stop_battery_soc = <97>;
+
+	/* wireless charger */
+	wless_region_t0_trig_temp = <310>; /* 0.1 degC */
+	wless_region_t0_clr_temp = <300>; /* 0.1 degC */
+	wless_region_t0_bpp_power = <(-1)>; /* no limit */
+	wless_region_t0_epp_power = <9600000>; /* uW */
+
+	wless_region_t1_trig_temp = <330>; /* 0.1 degC */
+	wless_region_t1_clr_temp = <320>; /* 0.1 degC */
+	wless_region_t1_bpp_power = <(-1)>; /* uW */
+	wless_region_t1_epp_power = <7200000>; /* uW */
+
+	wless_region_t2_trig_temp = <365>; /* 0.1 degC */
+	wless_region_t2_clr_temp = <355>; /* 0.1 degC */
+	wless_region_t2_bpp_power = <(-1)>; /* uW */
+	wless_region_t2_epp_power = <5400000>; /* uW */
+
+	wless_region_t3_trig_temp = <375>; /* 0.1 degC */
+	wless_region_t3_clr_temp = <365>; /* 0.1 degC */
+	wless_region_t3_bpp_power = <(-1)>; /* uW */
+	wless_region_t3_epp_power = <4400000>; /* uW */
+
+	wless_region_t4_trig_temp = <400>; /* 0.1 degC */
+	wless_region_t4_clr_temp = <390>; /* 0.1 degC */
+	wless_region_t4_bpp_power = <3850000>; /* uW */
+	wless_region_t4_epp_power = <3850000>; /* uW */
+
+	wless_region_c0_soc = <85>; /* percent */
+	wless_region_c0_bpp_power = <(-1)>; /* no limit */
+	wless_region_c0_epp_power = <7200000>; /* uW */
+	wless_region_c1_soc = <95>; /* percent */
+	wless_region_c1_bpp_power = <(-1)>; /* no limit */
+	wless_region_c1_epp_power = <4400000>; /* uW */
+
+	wless_bpp_profile = "wless_bpp", "wless_3_85w",
+			    "wless_3_25w", "wless_3w";
+	wless_epp_profile = "wless_epp", "wless_9_6w",
+			    "wless_7_2w", "wless_6_75w", "wless_6_3w", "wless_5_4w",
+			    "wless_4_4w", "wless_3_85w", "wless_3w";
+	wless_bpp_input_current = <800000>;
+	wless_bpp_charging_current = <1500000>;
+	wless_bpp_vbus = <5500000>;
+	wless_bpp_mivr = <4500000>;
+	wless_epp_input_current = <1000000>;
+	wless_epp_charging_current = <3000000>;
+	wless_epp_vbus = <12000000>;
+	wless_epp_mivr = <11500000>;
+	wless_9_6w_input_current = <800000>;
+	wless_9_6w_charging_current = <3000000>;
+	wless_9_6w_vbus = <12000000>;
+	wless_9_6w_mivr = <11500000>;
+	wless_7_2w_input_current = <800000>;
+	wless_7_2w_charging_current = <2400000>;
+	wless_7_2w_vbus = <9000000>;
+	wless_7_2w_mivr = <8000000>;
+	wless_6_75w_input_current = <750000>;
+	wless_6_75w_charging_current = <2400000>;
+	wless_6_75w_vbus = <9000000>;
+	wless_6_75w_mivr = <8000000>;
+	wless_6_3w_input_current = <700000>;
+	wless_6_3w_charging_current = <2400000>;
+	wless_6_3w_vbus = <9000000>;
+	wless_6_3w_mivr = <8000000>;
+	wless_5_4w_input_current = <600000>;
+	wless_5_4w_charging_current = <2400000>;
+	wless_5_4w_vbus = <9000000>;
+	wless_5_4w_mivr = <8000000>;
+	wless_4_4w_input_current = <800000>;
+	wless_4_4w_charging_current = <1500000>;
+	wless_4_4w_vbus = <5500000>;
+	wless_4_4w_mivr = <4500000>;
+	wless_3_85w_input_current = <700000>;
+	wless_3_85w_charging_current = <1500000>;
+	wless_3_85w_vbus = <5500000>;
+	wless_3_85w_mivr = <4500000>;
+	wless_3_25w_input_current = <650000>;
+	wless_3_25w_charging_current = <1200000>;
+	wless_3_25w_vbus = <5000000>;
+	wless_3_25w_mivr = <4500000>;
+	wless_3w_input_current = <600000>;
+	wless_3w_charging_current = <1200000>;
+	wless_3w_vbus = <5000000>;
+	wless_3w_mivr = <4500000>;
+
+	wless_margin_power = <3000000>;
+	wless_fastchg_power = <9000000>;
+
+	/* cable measurement impedance */
+	vbat_cable_imp_threshold = <3000000>; /* uV */
+
+	/* PD */
+	pd_vbus_low_bound = <5000000>;
+	pd_vbus_upper_bound = <9000000>;
+	pd_ichg_level_threshold = <1000000>; /* uA */
+	pd_stop_battery_soc = <80>;
+
+	/* LGE Charging Algorithm */
+	lge_charging {
+		ieoc = <150000>;
+		aicl-interval = <60>;
+
+		/* slave charger */
+		normal_fcc = <2700000>;
+		chargerlogo_fcc = <2700000>;
+
+		/* slave charger */
+		slave-trig-ichg = <1000000>;
+		slave-trig-vbus = <5000000>;
+		slave-ichg-percent = <50>;
+		slave-step-ieoc = <450000>;
+		slave-step-ichg = <200000>;
+		slave-vfloat-offset = <100000>;
+
+		/* divider charger */
+		dv2-min-icl = <1000000>;
+	};
+};
+
+&mt_charger {
+	floated-retry-ms = <3000>; /* 3000 ms */
+	fastchg-support = <1>;
+};
+
+&lk_charger {
+	fast_charge_voltage = <2800000>;
+	ac_charger_current = <2000000>;
+	ac_charger_input_current = <2000000>;
+	charging_host_charger_current = <1500000>;
+
+	enable_anime;
+	blinking_times = <10>;
+	blinking_period = <500>;
+};
+
+&bat_gm30 {
+	/*	Configures whether using embedded battery or not.*/
+	EMBEDDED_SEL = <(0)>;
+	/* SOC_ZERO_PERCENT shutdown_cond  1:enable , 0:disable */
+	SHUTDOWN_GAUGE0 = <(0)>;
+
+	/*      Pseudo 100% percentage at T0.*/
+	g_FG_PSEUDO100_T0 = <(95)>;
+	/*      Pseudo 100% percentage at T1.*/
+	g_FG_PSEUDO100_T1 = <(95)>;
+	/*      Pseudo 100% percentage at T2.*/
+	g_FG_PSEUDO100_T2 = <(95)>;
+	/*      Pseudo 100% percentage at T3.*/
+	g_FG_PSEUDO100_T3 = <(95)>;
+	/*      Pseudo 100% percentage at T4.*/
+	g_FG_PSEUDO100_T4 = <(95)>;
+
+	/* If ACTIVE_TABLE == x, use g_FG_PSEUDO100 instead of g_FG_PSEUDO100_TX*/
+	g_FG_PSEUDO100 = <95 95 95 95
+		95 95 95 95
+		95 95 95 95
+		95 95 95 95
+		95 95 95 95
+		95 95 95 95
+		95 95 95 95
+		95 95 95 95
+		95 95 95 95
+		95 95 95 95>;
+
+	PSEUDO1_SEL = <(0)>;
+
+	g_FG_PSEUDO1 = <1  1  1  1
+			1  1  1  1
+			1  1  1  1
+			1  1  1  1
+			1  1  1  1
+			1  1  1  1
+			1  1  1  1
+			1  1  1  1
+			1  1  1  1
+			1  1  1  1>;
+
+	DIFFERENCE_FULLOCV_ITH = <(220)>;
+	DIFFERENCE_VOLTAGE_UPDATE = <(-1)>;
+	AGING1_UPDATE_SOC = <(10)>;
+	AGING1_LOAD_SOC = <(50)>;
+	AGING_TEMP_DIFF = <(15)>;
+	AGING_TEMP_LOW_LIMIT = <(15)>;
+	AGING_TEMP_HIGH_LIMIT = <(45)>;
+	ZCV_SUSPEND_TIME = <(3)>; /* (time + 1)*4 min */
+	SLEEP_CURRENT_AVG = <(700)>; /*0.1mA*/
+
+	CAR_TUNE_VALUE = <(100)>;
+	HWOCV_OLDOCV_DIFF_CHR = <(2000)>;
+	SWOCV_OLDOCV_DIFF_CHR = <(2000)>;
+	VIR_OLDOCV_DIFF_EMB = <(2000)>;
+	VIR_OLDOCV_DIFF_EMB_LT = <(2000)>;
+
+	POWER_ON_CAR_CHR = <(20)>;
+	POWER_ON_CAR_NOCHR = <(-35)>;
+
+	/*The ui_soc will keep 100% until SOC drop X percents after unplugged.*/
+	KEEP_100_PERCENT = <(3)>;
+	KEEP_100_PERCENT_MINSOC = <(9400)>;
+
+	/* battery temperature table type - NTC table */
+	RBAT_TYPE = <(100)>;
+	RBAT_PULL_UP_R = <(100000)>;
+
+	rbat_temperature_table_num = <21>;
+	rbat_battery_temperature =
+	<
+		(-20) 1107967
+		(-15) 769826
+		(-10) 574512
+		(-5 ) 444740
+		0     337560
+		5     258266
+		10    199137
+		15    154710
+		20    121066
+		25    95401
+		30    75688
+		35    60426
+		40    49612
+		45    40063
+		50    32532
+		55    26561
+		60    22221
+		65    18320
+		70    15175
+		75    12627
+		80    10557>;
+
+#include <lge/battery_BL-T50_EOC150mA.dtsi>
+};
+
+&usb_boost_manager {
+	pinctrl-names = "default", "otg_disable", "otg_enable";
+	pinctrl-0 = <&otg_boost_disable>;
+	pinctrl-1 = <&otg_boost_disable>;
+	pinctrl-2 = <&otg_boost_enable>;
+};
+
+&pio {
+	otg_boost_disable: otg_boost_disable {
+		otg_en {
+			pinmux = <PINMUX_GPIO96__FUNC_GPIO96>;
+			output-low;
+		};
+	};
+	otg_boost_enable: otg_boost_enable {
+		otg_en {
+			pinmux = <PINMUX_GPIO96__FUNC_GPIO96>;
+			output-high;
+		};
+	};
+};
+
+/* Battery ID */
+&odm {
+	battery_id {
+		compatible = "lge,battery-id";
+
+		voltage-max = <4430000>;
+		charge-full-design = <4000000>;
+		model-name = "BLT50";
+
+		LGC_GEN2 {
+			id = "LGC_GEN2";
+			manufacturer = "LGC";
+			type = "LGE_BLT50_LGC_4000mAh";
+			profile-idx = <0>;
+		};
+	};
+};
+
+/* USB ID */
+&odm {
+	usb_id {
+		compatible = "lge,usb-id";
+
+		delay = <50>;
+
+		/*
+		 * Pull-up : 1.8V 500k (20%)
+		 * ID : 56k (20%), 130k (20%), 910k (20%)
+		 */
+		range = <
+		/*	min 	max 	type	*/
+			150	230	6	/* 6: LT_CABLE_56K */
+			300	460	7	/* 7: LT_CABLE_130K */
+			1030	1350	11	/* 11: LT_CABLE_910K */
+			1351	2000	8	/* 8: USB_CABLE_400MA */
+		>;
+
+		embedded-battery;
+		debounce = <5>;
+	};
+};
+
+/* Charger Controller */
+&odm {
+	charger_controller {
+		compatible = "lge,charger-controller";
+		charger = "ac", "usb", "wireless";
+
+		/* base information */
+		icl = <2700>;
+		fcc = <4000>;
+		vfloat = <4430>;
+		batt_therm_comp = <3>;
+
+		/* LCD */
+		restricted-LCD-ON = <1500>;
+
+		/* otp */
+		otp-version = "2.1";
+		otp-fcc = <1100>;
+		otp-vfloat = <4000>;
+
+		/* battery care charging */
+		bcc-current = <1800>;
+
+		/* spec */
+		spec = <
+			 0 15 4000 1900	/* 0.5C */
+			 0 15 4450 1140	/* 0.3C */
+			15 45 4250 3880	/* 1.0C */
+			15 45 4450 2328	/* 0.6C */
+			45 60 4410 1900	/* 0.5C */
+		>;
+		spec-step-fcc = <200>;
+		spec-step-ms = <5000>;
+
+		/* time to full */
+		time_to_full_mode;
+		battery_full_capacity = <4000>;
+		sdp_current = <500>;
+		dcp_current = <2000>;
+		pep_current = <2700>;
+		direct_current = <3300>;
+		non_std_current = <500>;
+		epp_current = <1100>;
+		bpp_current = <900>;
+		report_ttf_comp = <0>;
+		sdp_comp = <0>;
+		dcp_comp = <0>;
+		cdp_comp = <0>;
+		pep_comp = <(-1)>;
+		pd_comp = <0>;
+		direct_comp = <5>;
+		non_std_comp = <0>;
+		epp_comp = <0>;
+		bpp_comp = <5>;
+		min_comp = <0>;
+		batt_comp = <
+			0	/* LGC */
+			0	/* TOCAD */
+			0	/* ATL */
+			0	/* BYD */
+			0	/* LISHEN */
+		>;
+		cc_data = <
+			/* current soc */
+			2700	0
+			2340	681
+		>;
+		cv_data = <
+			/* current soc time */
+			2195	831	1945
+			2064	841	1874
+			1909	851	1792
+			1773	861	1710
+			1626	871	1618
+			1497	881	1526
+			1367	891	1423
+			1245	901	1311
+			1134	911	1198
+			1027	921	1075
+			931	931	952
+			841	941	819
+			753	951	676
+			675	962	522
+			653	966	471
+			608	972	379
+			580	977	307
+			552	982	246
+			531	989	184
+			520	990	164
+			510	991	133
+			507	992	112
+			495	993	82
+			484	994	51
+			476	995	31
+			469	996	0
+			463	1000	0
+		>;
+
+		/* ACTM */
+		actm_check = <30>;
+		wired_therm_sensor = <1>; /* batt(0) skin(1) both(2) */
+		wireless_therm_sensor = <1>;
+
+		step = <
+			/* delta_temp wire(mA) wireless(epp bpp)(mW) */
+			5 100 300 450
+			15 200 600 900
+			30 400 900 1350
+		>;
+		wired = <
+			/* temp min_fcc(pps pep Other fb)*/
+			300 4000 2500 2000 1000
+			340 1500 1500 1500 500
+			380 500 500 500 500
+		>;
+		wireless = <
+			/* temp min_fcc(epp bpp Other fb)*/
+			300 5400 4200 0000 3600
+			340 3600 3600 0000 2700
+			380 2700 2700 0000 2700
+		>;
+
+		/* game */
+		/*
+		game-fcc = <500>;
+
+		game-light-fcc = <500>;
+		game-light-load = <80>;
+		game-light-sec = <100>;
+
+		game-lowbatt-fcc = <500>;
+		game-lowbatt-soc = <15>;
+		*/
+	};
+};
+
+/* Unified Power Sysfs */
+&odm {
+	lge_power_sysfs {
+		compatible = "lge,power-sysfs";
+		sysfs,node =
+			/* adc group */
+			"adc", "batt_id", "/sys/class/power_supply/battery_id/valid_batt_id",
+			"adc", "batt_therm", "/sys/class/power_supply/battery/temp",
+			"adc", "thermal", "/sys/class/thermal/",
+			"adc", "usb_id", "/sys/module/lge_usb_id/parameters/usb_id",
+			"adc", "usb_in", "/sys/class/power_supply/charger/voltage_now",
+			"adc", "vts", "/sys/class/thermal/thermal_zone41/temp",
+			/* battery group */
+			"battery", "battery_type", "/sys/class/power_supply/battery_id/battery_type",
+			"battery", "capacity", "/sys/class/power_supply/battery/capacity",
+			"battery", "cycle", "/sys/class/power_supply/battery/battery_cycle",
+			"battery", "raw_capacity", "/sys/class/power_supply/battery/raw_capacity",
+			"battery", "ttf_capacity", "/sys/class/power_supply/battery/ttf_capacity",
+			"battery", "health", "/sys/class/power_supply/battery/health",
+			"battery", "present", "/sys/class/power_supply/battery/present",
+			"battery", "pseudo_batt", "/sys/module/pseudo_power_supply/parameters/pseudo_batt",
+			"battery", "temp", "/sys/class/power_supply/battery/temp",
+			"battery", "valid_batt_id", "/sys/class/power_supply/battery_id/valid_batt_id",
+			"battery", "check_batt_id_for_aat", "/sys/class/power_supply/battery_id/check_batt_id_for_aat",
+			"battery", "voltage_now", "/sys/class/power_supply/battery/voltage_now",
+			"battery", "status", "/sys/class/power_supply/battery/status",
+			"battery", "status_raw", "/sys/class/power_supply/charger_controller/status",
+			"battery", "time_to_full_now", "/sys/class/power_supply/charger_controller/time_to_full_now",
+			"battery", "charge_full", "/sys/class/power_supply/battery/charge_full",
+			"battery", "charge_full_design", "/sys/class/power_supply/battery/charge_full_design",
+			"battery", "charge_counter", "/sys/class/power_supply/battery/charge_counter",
+			"battery", "battery_age", "/sys/class/power_supply/battery/battery_age",
+			"battery", "battery_age_level", "/sys/class/power_supply/battery/battery_age_level",
+			"battery", "condition", "/sys/class/power_supply/battery/battery_condition",
+			"battery", "bsm_timetofull", "/sys/module/charger_controller/parameters/bcc",
+			"battery", "vzw_chg", "/sys/class/power_supply/charger/vzw_chg",
+			/* charger group */
+			"charger", "ac_online", "/sys/class/power_supply/ac/online",
+			"charger", "usb_online", "/sys/class/power_supply/usb/online",
+			"charger", "wlc_online", "/sys/class/power_supply/wireless/online",
+			"charger", "present", "/sys/class/power_supply/charger/online",
+			"charger", "ibat_current", "/sys/class/power_supply/battery/current_now",
+			"charger", "ichg_current", "/sys/class/power_supply/charger/current_max",
+			"charger", "charging_enabled", "/sys/class/power_supply/charger_controller/charging_enabled",
+			"charger", "restricted_charging", "/sys/module/charger_controller/parameters/restricted_charging",
+			"charger", "store_demo_enabled", "/sys/class/power_supply/charger_controller/store_demo_enabled",
+			"charger", "fastchg", "/sys/class/power_supply/charger/fastchg",
+			"charger", "fastchg_support", "/sys/class/power_supply/charger/fastchg_support",
+			"charger", "incompatible", "/sys/class/power_supply/charger/incompatible_chg",
+			"charger", "pseudo_hvdcp", "/sys/module/pseudo_power_supply/parameters/hvdcp_mode",
+			"charger", "chgstep", "/sys/module/charger_controller/parameters/chgstep",
+			"charger", "chgtype", "/sys/module/charger_controller/parameters/chgtype",
+			"charger", "factory_parallel_charger_test", "/proc/mtk_battery_cmd/pe50_test_mode",
+			"charger", "usb_parallel_charging_ready", "/proc/mtk_battery_cmd/pe50_ready",
+			"charger", "usb_parallel_charging_enabled", "/proc/mtk_battery_cmd/pe50_active",
+			"charger", "typec_cc_orientation", "/sys/class/dual_role_usb/otg_default/typec_cc_orientation",
+			"charger", "time_out", "/sys/devices/platform/charger/safety_timer",
+			/* ccd group */
+			"ccd", "icl", "/sys/module/charger_controller/parameters/ccd_icl",
+			"ccd", "fcc", "/sys/module/charger_controller/parameters/ccd_fcc",
+			"ccd", "vfloat", "/sys/module/charger_controller/parameters/ccd_vfloat",
+			"ccd", "chgtype", "/sys/module/charger_controller/parameters/ccd_chgtype",
+			"ccd", "ichg", "/sys/class/power_supply/charger_controller/constant_charge_current",
+			"ccd", "ttf", "/sys/module/charger_controller/parameters/ccd_ttf",
+			/* lcd group */
+			"lcd", "brightness", "/sys/class/leds/lcd-backlight/brightness",
+			"lcd", "max_brightness", "/sys/class/leds/lcd-backlight/max_brightness",
+			/* key led group */
+			/* cpu group */
+			"cpu", "game_mode", "/proc/ppm/policy/auto_game_limit",
+			/* gpu group */
+			/* platform group */
+			/* perf service feature group */
+			/* testmode group */
+			"testmode", "batt_id", "/sys/class/power_supply/battery_id/batt_id",
+			"testmode", "battexist", "/sys/class/power_supply/battery/present",
+			"testmode", "charge", "/sys/module/charger_controller/parameters/atcmd_charge",
+			"testmode", "chcomp", "/sys/module/charger_controller/parameters/atcmd_chcomp",
+			"testmode", "chgmodeoff", "/sys/module/charger_controller/parameters/atcmd_chgmodeoff",
+			"testmode", "current_max", "/sys/class/power_supply/usb/current_max",
+			"testmode", "current_now", "/sys/class/power_supply/battery/current_now",
+			"testmode", "fuelval", "/sys/class/power_supply/battery/capacity",
+			"testmode", "temp", "/sys/module/charger_controller/parameters/atcmd_batmp",
+			"testmode", "usb_id", "/sys/module/lge_usb_id/parameters/atcmd_usb_id",
+			"testmode", "valid_batt_id", "/sys/class/power_supply/battery_id/check_batt_id_for_aat",
+			"testmode", "voltage_now", "/sys/class/power_supply/battery/voltage_now";
+	};
+};
+
+&odm {
+	tboard_thermistor6: thermal-sensor6 {
+		compatible = "mediatek,mtboard-thermistor6";
+		io-channels = <&auxadc 5>;
+		io-channel-names = "thermistor-ch5";
+	};
+};
+
+&odm {
+      lge,prmd {
+          compatible = "lge,prm";
+          lge,dd-enabled;
+          lge,sben-enabled;
+      };
+};

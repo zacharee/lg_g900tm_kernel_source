@@ -1,0 +1,127 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
+ */
+
+&spi5 {
+	cs-gpios = <&pio 37 0>;
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	fpga_mgr0: lattice@0 {
+		compatible = "lattice,ice40-fpga-mgr";
+		status = "okay";
+		reg = <0>;
+		interrupt-parent = <&pio>;
+		interrupts = <99 IRQ_TYPE_LEVEL_HIGH 99 0>;		/* check */
+
+		spi-max-frequency = <8000000>;
+
+		cdone-gpio = <&pio 140 0>;
+		reset-gpio = <&pio 81 0>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&lattice0_cs_active
+				&lattice0_int_active
+				&lattice0_reset_active
+				&lattice0_cdone_active>;
+	};
+};
+
+&odm {
+	/* Secondary USB port related controller */
+	usb1: sls11hc@0 {
+		compatible = "sls,sls11hc";
+
+		vdda18-supply = <&mt_pmic_vm18_ldo_reg>;
+
+		ldo1_en-gpio = <&pio 70 0>;		/* 1.2V VDD Switch */
+		ldo2_en-gpio = <&pio 29 0>;		/* 3.3V VDD Switch */
+
+		reset-gpio = <&pio 190 0>;
+
+		ds_sw_sel-gpio = <&pio 186 0>;
+		creset_b-gpio = <&pio 81 0>;
+		cs-gpio = <&pio 37 0>;
+
+		pinctrl-names = "default";
+		pinctrl-0 = <&sls11hc0_ldo_en_active
+				&sls11hc0_reset_active
+				&sls11hc0_ds_sw_sel_active>;
+
+		fpga-mgr = <&fpga_mgr0>;
+		firmware-name = "lattice/u11hc_spi_lge_des_impl_1_19M.bin";
+
+		extcon = <&lge_usb_ds3>, <&extcon_usb>;
+	};
+};
+
+
+&pio {
+	lattice0_pins: lattice0_pins {
+		lattice0_cs_active: lattice0_cs_active {
+			pins_cmd_dat {
+				pinmux = <PINMUX_GPIO37__FUNC_GPIO37>;
+				output-low;
+			};
+		};
+
+		lattice0_int_active: lattice0_int_active {
+			pins_cmd_dat {
+				pinmux = <PINMUX_GPIO99__FUNC_GPIO99>;
+				slew-rate = <0>;
+				bias-disable;
+				input-enable;
+			};
+		};
+
+		lattice0_reset_active: lattice0_reset_active {
+			pins_cmd_dat {
+				pinmux = <PINMUX_GPIO81__FUNC_GPIO81>;
+				slew-rate = <1>;
+				bias-disable;
+
+			};
+		};
+		lattice0_cdone_active: lattice0_cdone_active {
+			pins_cmd_dat {
+				pinmux = <PINMUX_GPIO140__FUNC_GPIO140>;
+				slew-rate = <0>;
+				bias-disable;
+				input-enable;
+			};
+		};
+	};
+
+	sls11hc0_pins: sls11hc0_pins {
+		sls11hc0_ldo_en_active: sls11hc0_ldo_en_active {
+			pins_cmd_dat_0 {
+				pinmux = <PINMUX_GPIO70__FUNC_GPIO70>;
+				slew-rate = <1>;
+				bias-pull-down;
+			};
+			pins_cmd_dat_1 {
+				pinmux = <PINMUX_GPIO29__FUNC_GPIO29>;
+				slew-rate = <1>;
+				bias-pull-down;
+			};
+		};
+
+		sls11hc0_reset_active: sls11hc0_reset_active {
+			pins_cmd_dat {
+				pinmux = <PINMUX_GPIO190__FUNC_GPIO190>;
+				slew-rate = <1>;
+				bias-disable;
+			};
+		};
+
+		sls11hc0_ds_sw_sel_active: sls11hc0_ds_sw_sel_active {
+			pins_cmd_dat {
+				pinmux = <PINMUX_GPIO186__FUNC_GPIO186>;
+				slew-rate = <1>;
+				bias-pull-down;
+			};
+		};
+	};
+};
+

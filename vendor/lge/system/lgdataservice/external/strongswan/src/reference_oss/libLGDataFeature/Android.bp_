@@ -1,0 +1,40 @@
+cc_library_shared {
+
+    name: "LGDataFeature",
+    vendor_available: true,
+    system_ext_specific : true,
+
+    srcs: [
+        "LGDataFeature.cpp",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libcutils",
+    ],
+
+    cflags: ["-Werror"],
+
+    export_include_dirs: ["."],
+}
+
+cc_library_shared {
+
+    name: "LGDataFeature_vendor",
+    vendor: true,
+
+    srcs: [
+        "LGDataFeature.cpp",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libcutils",
+    ],
+
+    cflags: ["-Werror"],
+
+    export_include_dirs: ["."],
+}
